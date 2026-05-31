@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accés · El Parlamalament de l'Artista</title>
+  <meta name="description" content="Accés al Parlamalament de l'Artista. Identifica't amb un dels mecanismes d'identificació artístics vàlids.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="acces">
+  <a class="skip-link" href="#main">Salta al contingut</a>
+
+  <div class="brand-bg" aria-hidden="true">
+    <span class="guide guide-l"></span>
+    <span class="guide guide-r"></span>
+    <span class="arch arch-l"><svg viewBox="0 0 120 240"><path d="M0 0 Q120 120 0 240 Z" fill="currentColor"/></svg></span>
+    <span class="arch arch-r"><svg viewBox="0 0 120 240"><path d="M0 0 Q120 120 0 240 Z" fill="currentColor"/></svg></span>
+    <span class="word word-l">AMAT</span>
+    <span class="word word-r">L'ART</span>
+  </div>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="container">
+        <a class="brand-title" href="home.html">
+          <svg class="mark" viewBox="0 0 100 60" aria-hidden="true"><path d="M4 58 A46 46 0 0 1 96 58 Z" fill="currentColor"/></svg>
+          El Parlamalament
+        </a>
+        <div class="header-meta">
+          <a href="#">Suport</a><span class="sep">|</span><a href="#" lang="ca">cat</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="acces-wrap">
+      <div class="container acces-grid">
+        <section class="acces">
+          <h1>Accés</h1>
+          <p class="lead">Per accedir al dret de participar de la cultura cal que t'identifiquis
+             amb un dels mecanismes d'identificació artístics vàlids.</p>
+
+          <form id="acces-form" class="options" novalidate>
+            <button type="button" class="btn-option" data-profile="precari">Soc artiste precari</button>
+            <button type="button" class="btn-option" data-profile="autonom">Soc autònom també precari</button>
+            <button type="button" class="btn-option" data-profile="legitimat">Soc artiste legitimat</button>
+          </form>
+
+          <p class="tramit-link">
+            <a class="link-arrow" href="captcha.html" data-profile="legitimat">
+              Accedeix al tràmit de legitimació <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          </p>
+
+          <div class="name-field">
+            <label for="nom">introduce tu nombre aquí:</label>
+            <input id="nom" name="nom" type="text" autocomplete="name" maxlength="40" aria-describedby="nom-error">
+          </div>
+          <p class="field-error" id="nom-error" role="alert" aria-live="assertive"></p>
+        </section>
+
+        <aside class="what-box">
+          <h2>Què pots fer en aquesta web?</h2>
+          <ul class="what-list">
+            <li><a href="#">Informar-te de l'estat del col·lectiu artístic</a></li>
+            <li><a href="captcha.html">Tramitar el teu dret a ser artista legitimat</a></li>
+            <li><a href="#">Vincular-te amb el Parlamalament</a></li>
+          </ul>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-brand">
+          <svg class="mark" viewBox="0 0 100 60" aria-hidden="true"><path d="M4 58 A46 46 0 0 1 96 58 Z" fill="currentColor"/></svg>
+          <span class="name">Parlamalament<br>de l'Artista</span>
+        </div>
+        <div class="footer-credit">Un projecte de <strong>Jordi Bretcha</strong><br>amb la col·laboració de <strong>Manuel Latour</strong></div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

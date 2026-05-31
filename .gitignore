@@ -1,0 +1,17 @@
+# sistema
+.DS_Store
+__pycache__/
+*.pyc
+
+# config local de l'eina de previsualització
+.claude/
+
+# materials font (no es publiquen al web; queden a la teva carpeta local)
+originals/
+Parlamalament web.pdf
+landing 1.png
+landing 2.png
+landing 3.png
+landing captcha.png
+captcha imagen.png
+fondo.jpeg

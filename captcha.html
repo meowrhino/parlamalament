@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verificació · El Parlamalament de l'Artista</title>
+  <meta name="description" content="Tràmit de legitimació: verifica que ets humà... i que coneixes gent del sector.">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="captcha">
+  <a class="skip-link" href="#main">Salta al contingut</a>
+
+  <div class="brand-bg" aria-hidden="true">
+    <span class="guide guide-l"></span>
+    <span class="guide guide-r"></span>
+    <span class="arch arch-l"><svg viewBox="0 0 120 240"><path d="M0 0 Q120 120 0 240 Z" fill="currentColor"/></svg></span>
+    <span class="arch arch-r"><svg viewBox="0 0 120 240"><path d="M0 0 Q120 120 0 240 Z" fill="currentColor"/></svg></span>
+    <span class="word word-l">AMAT</span>
+    <span class="word word-r">L'ART</span>
+  </div>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="container">
+        <a class="brand-title" href="home.html">
+          <svg class="mark" viewBox="0 0 100 60" aria-hidden="true"><path d="M4 58 A46 46 0 0 1 96 58 Z" fill="currentColor"/></svg>
+          El Parlamalament
+        </a>
+        <div class="header-meta">
+          <a href="#">Suport</a><span class="sep">|</span><a href="#" lang="ca">cat</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="captcha-wrap">
+      <div class="captcha">
+        <div class="captcha-head">
+          <div class="small">Selecciona totes les imatges amb</div>
+          <div class="target">persones que coneixes</div>
+        </div>
+
+        <div id="captcha-grid" class="captcha-grid"
+             data-img="assets/img/captcha.png" data-cols="3" data-rows="4"
+             role="group" aria-label="Selecciona les persones que coneixes"></div>
+
+        <p class="captcha-msg" id="captcha-msg" role="alert" aria-live="assertive"></p>
+
+        <div class="captcha-foot">
+          <div class="captcha-logo">
+            <svg class="mark" viewBox="0 0 100 60" aria-hidden="true"><path d="M4 58 A46 46 0 0 1 96 58 Z" fill="currentColor"/></svg>
+            <span>parlaCAPTCHA<br>Privacitat · Condicions</span>
+          </div>
+          <button class="btn-red" id="captcha-verify" type="button">Verifica</button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-brand">
+          <svg class="mark" viewBox="0 0 100 60" aria-hidden="true"><path d="M4 58 A46 46 0 0 1 96 58 Z" fill="currentColor"/></svg>
+          <span class="name">Parlamalament<br>de l'Artista</span>
+        </div>
+        <div class="footer-credit">Un projecte de <strong>Jordi Bretcha</strong><br>amb la col·laboració de <strong>Manuel Latour</strong></div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
