@@ -84,12 +84,11 @@ button { font-family: inherit; }
   background: var(--paper);
 }
 .brand-bg::before {
-  /* textura fondo.jpg, molt subtil */
+  /* textura de fons real: fondo.jpg, ben visible */
   content: "";
   position: absolute; inset: 0;
   background: url("../img/fondo.jpg") center/cover no-repeat;
-  opacity: .35;
-  mix-blend-mode: multiply;
+  opacity: .9;
 }
 .brand-bg .guide {
   position: absolute; top: 0; bottom: 0;
