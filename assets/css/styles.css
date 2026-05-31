@@ -71,9 +71,7 @@ button { font-family: inherit; }
 .skip-link:focus { top: 8px; }
 
 /* ============================================================
-   FONS DE MARCA (giant wordmark + arcs + guies)  ·  decoratiu
-   Recrea el fons dels wireframes: lletres gegants "AMAT … L'ART",
-   els dos arcs negres i les dues guies verticals, sobre la textura.
+   FONS — només la imatge fondo.jpg, a tota pantalla
    ============================================================ */
 .brand-bg {
   position: fixed;
@@ -84,50 +82,10 @@ button { font-family: inherit; }
   background: var(--paper);
 }
 .brand-bg::before {
-  /* fons: només la imatge fondo.jpg, a tota pantalla */
   content: "";
   position: absolute; inset: 0;
   background: url("../img/fondo.jpg") center/cover no-repeat;
-  opacity: 1;
 }
-.brand-bg .guide {
-  position: absolute; top: 0; bottom: 0;
-  width: 1px; background: var(--line);
-}
-.brand-bg .guide-l { left: 18.2%; }
-.brand-bg .guide-r { right: 18.2%; }
-
-.brand-bg .arch {
-  position: absolute;
-  top: 38%;
-  width: 12vw; height: 34vh;
-  color: var(--ink);
-}
-.brand-bg .arch svg { width: 100%; height: 100%; display: block; }
-.brand-bg .arch-l { left: 8%;  }
-.brand-bg .arch-r { right: 8%; transform: scaleX(-1); }
-
-.brand-bg .word {
-  position: absolute;
-  bottom: -2.5vw;
-  font-weight: 700;
-  font-size: 23vw;
-  line-height: .8;
-  letter-spacing: -.02em;
-  color: var(--ink);
-  white-space: nowrap;
-}
-.brand-bg .word-l { left: -1.5vw; }
-.brand-bg .word-r { right: -1.5vw; }
-
-/* En pàgines amb contingut el fons passa a marca d'aigua per llegibilitat;
-   a la landing 1 (index) es manté potent perquè la card tapa el centre. */
-body[data-page="acces"] .brand-bg .word,
-body[data-page="home"] .brand-bg .word,
-body[data-page="captcha"] .brand-bg .word { opacity: .06; }
-body[data-page="acces"] .brand-bg .arch,
-body[data-page="home"] .brand-bg .arch,
-body[data-page="captcha"] .brand-bg .arch { opacity: .12; }
 
 /* ---------- Layout base ---------- */
 .page {
@@ -173,7 +131,6 @@ main { flex: 1 0 auto; }
   display: inline-flex; align-items: center; gap: 12px;
   text-decoration: none;
 }
-.brand-title .mark { width: 26px; height: 16px; color: #fff; }
 .header-meta {
   font-size: .95rem;
   display: flex; align-items: center; gap: 10px;
@@ -259,26 +216,12 @@ main { flex: 1 0 auto; }
   margin-top: 56px;
 }
 .site-footer .container {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 24px;
   padding-block: 22px;
-}
-.footer-brand {
-  display: flex; align-items: center; gap: 14px;
-  min-width: 240px;
-}
-.footer-brand .mark { width: 54px; height: 32px; color: var(--ink); flex: none; }
-.footer-brand .name {
-  font-size: .7rem; font-weight: 700; letter-spacing: .14em;
-  text-transform: uppercase; line-height: 1.3;
-}
-.footer-mid {
-  flex: 1 1 auto; text-align: center;
-  font-weight: 700; letter-spacing: .1em;
-  color: var(--ink-soft);
 }
 .footer-credit {
   font-size: .82rem; color: var(--ink-soft);
-  text-align: right; min-width: 240px;
+  text-align: center;
 }
 .footer-credit strong { color: var(--ink); }
 
@@ -558,12 +501,6 @@ main { flex: 1 0 auto; }
 .slide.active { opacity: 1; }
 .slide.img-slide { padding: 0; }
 .slide.img-slide img { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; }
-.slide.img-slide .caption {
-  position: absolute; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(transparent, rgba(0,0,0,.75));
-  color: #fff; padding: 28px 22px 16px; text-align: left;
-  font-size: .98rem;
-}
 .slide.text-slide {
   background: #fff; color: var(--ink);
   border: 1px solid var(--line);
@@ -627,8 +564,6 @@ main { flex: 1 0 auto; }
   .home-layout { grid-template-columns: 1fr; }
   .sidebar { order: 2; }
   .brand-title { font-size: 1.15rem; }
-  .brand-bg .arch { display: none; }
-  .brand-bg .word { font-size: 30vw; opacity: .8; }
 
   .ministeri-nav .container { flex-direction: column; }
   .ministeri { width: 100%; }
@@ -638,8 +573,7 @@ main { flex: 1 0 auto; }
   .ministeri-menu a { color: #fff; }
   .ministeri-menu a:hover { background: rgba(0,0,0,.2); color: #fff; }
 
-  .site-footer .container { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .footer-mid, .footer-credit { text-align: left; }
+  .site-footer .container { gap: 16px; }
 }
 
 @media (max-width: 520px) {
