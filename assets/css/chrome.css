@@ -42,6 +42,9 @@
 }
 .ministeri-nav .container { display: flex; flex-wrap: wrap; }
 .ministeri { position: relative; }
+/* El Ministeri obert s'eleva perquè el seu desplegable tapi la resta de
+   botons (inclosa la 2a fila quan la barra fa wrap). */
+.ministeri.open { z-index: 20; }
 .ministeri > button {
   appearance: none; cursor: pointer; border: 0;
   padding: 13px 18px;
