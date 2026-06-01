@@ -1,0 +1,52 @@
+/* ============================================================
+   PARLAMALAMENT · components (botons i enllaços reutilitzables)
+   ============================================================ */
+
+/* Botons grans acceptar / rebutjar (landing 1) */
+.btn {
+  appearance: none; cursor: pointer; border: 0;
+  display: inline-block;
+  padding: 14px 26px;
+  font-family: inherit; font-size: 1.5rem; line-height: 1.1;
+  color: #111; text-decoration: none;
+  transition: filter .12s ease, transform .04s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-accept { background: var(--green); }
+.btn-reject { background: var(--red-bright); }
+.btn-accept:hover, .btn-reject:hover { filter: brightness(1.06); }
+
+/* Botó d'opció vermell de pàgina sencera (Accés) */
+.btn-option {
+  appearance: none; cursor: pointer; border: 0;
+  display: block; width: 100%;
+  padding: 12px 22px;
+  font-family: inherit; font-size: 1.9rem; text-align: center;
+  color: #111; background: var(--red-bright);
+  transition: filter .12s ease, transform .04s ease;
+}
+.btn-option:hover { filter: brightness(1.05); }
+.btn-option:active { transform: translateY(1px); }
+
+/* Botó vermell sòlid petit (CTA estil gencat) */
+.btn-red {
+  appearance: none; cursor: pointer; border: 0;
+  display: inline-block;
+  padding: 12px 20px;
+  font-family: inherit; font-size: 1rem; font-weight: 600;
+  color: #fff; text-decoration: none; background: var(--red);
+}
+.btn-red:hover { background: var(--red-dark); }
+
+/* Enllaç amb fletxa (→) */
+.link-arrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 1.05rem; font-weight: 600;
+  color: var(--red); text-decoration: none;
+}
+.link-arrow:hover { text-decoration: underline; }
+
+@media (max-width: 520px) {
+  .btn { font-size: 1.2rem; }
+  .btn-option { font-size: 1.4rem; }
+}

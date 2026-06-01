@@ -3,88 +3,114 @@
 Web paròdica i crítica del sector de les arts visuals, amb l'estètica institucional de la
 Generalitat (gencat). Un projecte de **Jordi Bretcha** amb la col·laboració de **Manuel Latour**.
 
-Lloc web estàtic en **HTML + CSS + JavaScript vanilla** (sense frameworks ni pas de *build*).
+Lloc web **estàtic**, en HTML + CSS + JavaScript *vanilla* (sense frameworks ni pas de *build*).
+
+🔗 **En línia:** https://meowrhino.github.io/parlamalament/
 
 ---
+
+## El flux
+
+```
+index (landing 1)  ── acceptar / rebutjar ─────────────►  acces (landing 2)
+                                                              │  (captura el NOM; sense nom → alerta)
+                                                              ├─ Soc artiste precari ───────►  home
+                                                              ├─ Soc autònom també precari ─►  home
+                                                              └─ Soc artiste legitimat ─────►  captcha
+captcha ── "Verifica" (selecciona ≥1 quadre) ──────────────────────────────────────────►  home
+home (landing 3) ── "Fes el tràmit per legitimar-te" ──────────────────────────────────►  captcha
+```
+
+El **nom** i el **perfil** viatgen entre pàgines amb `sessionStorage`; la home saluda
+*"hola {nom}, artista {perfil}"*.
 
 ## Estructura
 
 ```
 parlamalament/
-├── index.html         landing 1 · muro "Aquesta web utilitza la ironia"
-├── acces.html         landing 2 · Accés (captura el nom + tria de perfil)
-├── captcha.html       captcha · meme reCAPTCHA ("persones que coneixes")
-├── home.html          landing 3 · home "El Parlamalament" (logueado)
+├── index.html          landing 1 · muro "Aquesta web utilitza l'antagonisme"
+├── acces.html          landing 2 · Accés (captura el nom + tria de perfil)
+├── captcha.html        captcha · meme estil reCAPTCHA ("persones que coneixes")
+├── home.html           landing 3 · home "El Parlamalament"
+│
 ├── assets/
-│   ├── css/styles.css  tota l'estètica (variables, capçalera, nav, footer, components)
-│   ├── js/app.js       comportament (estat, desplegables, carrusel, captcha, validació)
+│   ├── css/            un full per concepte; cada pàgina només carrega els que fa servir
+│   │   ├── base.css        variables, reset, tipografia, fons (fondo.jpg)   → totes
+│   │   ├── chrome.css      capçalera, nav de Ministeris, peu                → acces/captcha/home
+│   │   ├── components.css  botons i enllaços reutilitzables                 → index/acces/home
+│   │   ├── consent.css     landing 1                                        → index
+│   │   ├── acces.css       landing 2                                        → acces
+│   │   ├── captcha.css     captcha                                          → captcha
+│   │   └── home.css        landing 3 (salutació, sidebar, carrusel, òrgans) → home
+│   │
+│   ├── js/             mòduls ES (carregats des de main.js amb type="module")
+│   │   ├── util.js         helpers ($, $$), estat (sessionStorage), etiquetes de perfil
+│   │   ├── nav.js          desplegables dels Ministeris
+│   │   ├── consent.js      landing 1
+│   │   ├── acces.js        landing 2 (validació del nom + navegació)
+│   │   ├── captcha.js      construcció de la quadrícula + verificació
+│   │   ├── carousel.js     carrusel d'imatges
+│   │   ├── home.js         salutació + arrenca el carrusel
+│   │   └── main.js         punt d'entrada: dispatcha segons data-page del <body>
+│   │
 │   └── img/
-│       ├── fondo.jpg   textura de fons (subtil)
-│       └── captcha.png foto de l'esdeveniment (captcha + carrusel)
-├── serve.py           servidor estàtic local (per provar el flux complet)
-├── originals/         còpia dels materials originals (PDF, wireframes, imatges)
+│       ├── fondo.jpg       textura de fons
+│       └── captcha.png     foto de l'esdeveniment (captcha + carrusel)
+│
+├── serve.py            servidor estàtic local per provar el flux complet
+├── originals/          materials font (PDF, wireframes) — ignorats pel repo
 └── README.md
 ```
 
-## El flux
+### Per què aquesta arquitectura
 
-```
-index (landing 1)
-   ├─ "acceptar"  ─┐
-   └─ "rebutjar"  ─┴─►  acces (landing 2)   [captura el NOM; sense nom → alerta]
-                              ├─ "Soc artiste precari"          ─►  home  (perfil: precari)
-                              ├─ "Soc autònom també precari"    ─►  home  (perfil: autònom)
-                              └─ "Soc artiste legitimat"        ─►  captcha
-                                                                      └─ "Verifica" ─► home (perfil: legitimat)
-home (landing 3)
-   └─ "Fes el tràmit per legitimar-te" ─► captcha ─► home
-```
-
-El **nom** i el **perfil** viatgen entre pàgines amb `sessionStorage`, i la home saluda:
-*"hola {nom}, artista {perfil}"*.
+- **CSS per concepte:** cada pàgina enllaça només els fulls que necessita (p. ex. la
+  landing 1 no carrega el `chrome.css`). Les *media queries* viuen dins del full al qual
+  pertanyen.
+- **JS en mòduls ES:** `main.js` mira l'atribut `data-page` del `<body>` i crida només la
+  inicialització d'aquella pàgina. Cada mòdul fa una cosa i s'entén per separat.
+- **Capçalera/peu repetits a cada HTML** a propòsit: així cada pàgina és un document complet
+  i autònom (no depèn de cap inclusió). És poc codi i fàcil d'editar.
 
 ## Veure-ho en local
 
-Com que el flux passa dades entre pàgines, cal servir-ho per HTTP (no obrir els `.html`
-amb doble clic, perquè `file://` aïlla el `sessionStorage` entre pàgines).
+El flux passa dades entre pàgines, així que cal servir-ho per HTTP (els mòduls ES i el
+`sessionStorage` no funcionen bé obrint els `.html` amb doble clic):
 
 ```bash
 cd parlamalament
 python3 serve.py        # → http://127.0.0.1:4321
 ```
 
-(Qualsevol servidor estàtic serveix: `python3 -m http.server`, `npx serve`, Live Server, etc.)
+(Serveix qualsevol servidor estàtic: `python3 -m http.server`, `npx serve`, Live Server…)
 
 ## Desplegar
 
-Publicat amb **GitHub Pages** → **https://meowrhino.github.io/parlamalament/**
-
-És estàtic, així que també pots pujar-ho a **Netlify** o **Vercel** sense cap configuració.
+És estàtic: publicat amb **GitHub Pages** (branca `main`, arrel). També es pot pujar tal qual
+a **Netlify** o **Vercel** sense configuració. Les rutes són relatives, així que funciona
+igual sota un subdirectori (`/parlamalament/`).
 
 ## Com editar
 
-- **Textos:** directament a cada `.html`.
-- **Colors / tipografia:** variables a dalt de `assets/css/styles.css` (`:root`).
-  La tipografia és `Helvetica Neue, Helvetica, Arial…` — la corporativa de gencat
-  (Helvetica Neue, amb Arial com a alternativa lliure). Per consistència entre equips
-  pots afegir **Arimo** (clon lliure d'Arial).
-- **Imatges del carrusel:** afegeix fotos a `assets/img/` i duplica un `<div class="slide img-slide">`
-  a `home.html`. El punt focal de la imatge es controla amb `object-position` a `.slide.img-slide img`.
-- **Captcha:** la imatge i la quadrícula es configuren a `captcha.html`
-  (`data-img`, `data-cols`, `data-rows`).
+| Vols canviar… | On |
+|---|---|
+| Textos | directament a cada `.html` |
+| Colors i tipografia | variables a dalt de `assets/css/base.css` (`:root`) |
+| El fons | substitueix `assets/img/fondo.jpg` |
+| La imatge i mida del captcha | atributs `data-img` / `data-cols` / `data-rows` a `captcha.html` |
+| Afegir fotos al carrusel | duplica un `<div class="slide"><img …></div>` a `home.html` (els controls s'activen sols amb ≥2 imatges) |
 
-## Decisions de disseny (per revisar)
+La tipografia és `Helvetica Neue, Helvetica, Arial…` — la corporativa de gencat (no
+s'empaqueta cap fitxer de font per llicència; s'usa la del sistema).
 
-- **Antagonisme:** el muro fa servir *"Aquesta web utilitza l'antagonisme (de manera crítica)"*,
-  la variant del teu PDF (pàg. 3). La variant *"ironia"* del wireframe és un canvi d'una línia a `index.html`.
-- **Carrusel:** de moment mostra **una sola foto**. Si hi afegeixes més imatges (un
-  `<div class="slide img-slide">` per cadascuna a `home.html`), el carrusel s'activa sol amb fletxes i punts.
-- **Fons de marca gegant** (lletres AMA…ART + arcs): potent a la landing 1; a la resta de
-  pàgines passa a **marca d'aigua** per llegibilitat.
-- **Captcha:** és una broma — amb seleccionar ≥1 quadre i prémer *Verifica* ja et "legitima".
-- **"introduce tu nombre aquí"** es manté en castellà a propòsit (com al wireframe).
-- He **omès "ESTRUCTURAS 3.000"** (no apareix als materials). Si és el nom del vostre
-  espai/col·lectiu, digues-m'ho i el torno a posar.
+## Notes
+
+- El text del muro fa servir la variant **"antagonisme"** del PDF (pàg. 3). La variant
+  *"ironia"* del wireframe és un canvi d'una línia a `index.html`.
+- El **captcha** és una broma: amb seleccionar ≥1 quadre i prémer *Verifica* ja "legitima".
+- *"introduce tu nombre aquí"* es manté en castellà a propòsit (com al wireframe).
+- A la branca **`amb-extres`** hi ha un *snapshot* amb elements decoratius que es van retirar
+  (wordmark gegant, arcs, etc.) per si es volen recuperar.
 
 ---
 

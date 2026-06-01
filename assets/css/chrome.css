@@ -1,0 +1,130 @@
+/* ============================================================
+   PARLAMALAMENT · chrome (capçalera, nav de Ministeris, peu)
+   Estètica institucional gencat. La carreguen acces / captcha / home.
+   ============================================================ */
+
+/* ---------- Capçalera "EL PARLAMALAMENT" ---------- */
+.site-header {
+  position: relative;
+  z-index: 5;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  color: #fff;
+  background: var(--red);
+  /* franja diagonal fosca a la dreta, com la capçalera de gencat */
+  background-image: linear-gradient(105deg, transparent 56%, rgba(0,0,0,.55) 56%, rgba(0,0,0,.78) 100%);
+}
+.site-header .container {
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand-title {
+  margin: 0;
+  font-size: 1.5rem; font-weight: 800; letter-spacing: .01em;
+  text-transform: uppercase;
+  color: #fff; text-decoration: none;
+}
+.header-meta {
+  display: flex; align-items: center; gap: 10px;
+  font-size: .95rem;
+}
+.header-meta a { color: #fff; text-decoration: none; }
+.header-meta a:hover { text-decoration: underline; }
+.header-meta .sep { opacity: .6; }
+
+/* ---------- Barra de Ministeris (desplegables) ---------- */
+.ministeri-nav {
+  position: relative;
+  z-index: 4;
+  background: var(--red);
+  border-top: 1px solid rgba(255,255,255,.25);
+}
+.ministeri-nav .container { display: flex; flex-wrap: wrap; }
+.ministeri { position: relative; }
+.ministeri > button {
+  appearance: none; cursor: pointer; border: 0;
+  padding: 13px 18px;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .92rem; font-weight: 600;
+  color: #fff; background: transparent;
+  border-right: 1px solid rgba(255,255,255,.22);
+}
+.ministeri:first-child > button { border-left: 1px solid rgba(255,255,255,.22); }
+.ministeri > button:hover { background: var(--red-dark); }
+.ministeri > button .caret {
+  width: 0; height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #fff;
+  transition: transform .15s ease;
+}
+.ministeri.open > button .caret { transform: rotate(180deg); }
+
+.ministeri-menu {
+  display: none;
+  position: absolute; top: 100%; left: 0;
+  min-width: 290px;
+  padding: 8px 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--red);
+  box-shadow: var(--shadow);
+}
+.ministeri.open .ministeri-menu { display: block; }
+.ministeri-menu .menu-head {
+  padding: 8px 18px 6px;
+  margin-bottom: 4px;
+  font-size: .72rem; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--line);
+}
+.ministeri-menu a {
+  display: block;
+  padding: 9px 18px;
+  font-size: .95rem;
+  color: var(--ink); text-decoration: none;
+}
+.ministeri-menu a:hover { color: var(--red); background: var(--gray-bg); }
+
+/* ---------- Peu de pàgina (logotip) ---------- */
+.site-footer {
+  position: relative;
+  z-index: 3;
+  margin-top: 56px;
+  background: var(--gray-bg);
+  border-top: 1px solid var(--line);
+}
+.site-footer .container {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 24px;
+  padding-block: 22px;
+}
+.footer-brand { display: flex; align-items: center; gap: 14px; }
+.footer-brand .mark { flex: none; width: 54px; height: 32px; color: var(--ink); }
+.footer-brand .name {
+  font-size: .7rem; font-weight: 700; letter-spacing: .14em; line-height: 1.3;
+  text-transform: uppercase;
+}
+
+/* ---------- Responsive del chrome ---------- */
+@media (max-width: 880px) {
+  .brand-title { font-size: 1.15rem; }
+
+  /* La barra de Ministeris passa a acordió vertical */
+  .ministeri-nav .container { flex-direction: column; }
+  .ministeri { width: 100%; }
+  .ministeri > button {
+    width: 100%; justify-content: space-between;
+    border: 0; border-bottom: 1px solid rgba(255,255,255,.22);
+  }
+  .ministeri-menu {
+    position: static;
+    border: 0; box-shadow: none;
+    background: var(--red-dark);
+  }
+  .ministeri-menu .menu-head { color: #ffd; border-color: rgba(255,255,255,.2); }
+  .ministeri-menu a { color: #fff; }
+  .ministeri-menu a:hover { color: #fff; background: rgba(0,0,0,.2); }
+
+  .site-footer .container { gap: 16px; }
+}

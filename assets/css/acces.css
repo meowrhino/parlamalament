@@ -1,0 +1,55 @@
+/* ============================================================
+   PARLAMALAMENT · landing 2 — Accés (identificació + nom)
+   ============================================================ */
+.acces-wrap { padding-top: 40px; }
+.acces-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.acces h1 { margin: 0 0 14px; font-size: 2.2rem; font-weight: 700; }
+.acces .lead {
+  max-width: 46ch; margin: 0 0 28px;
+  font-size: 1.02rem; color: #2a2a2a;
+}
+.options { display: grid; gap: 22px; max-width: 560px; }
+.tramit-link { margin: 26px 0 8px; }
+
+/* Camp del nom (es manté en castellà, com al wireframe, a propòsit) */
+.name-field {
+  margin: 30px 0 6px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
+  font-size: 1.7rem;
+}
+.name-field label { white-space: nowrap; }
+.name-field input {
+  flex: 1 1 220px; min-width: 220px;
+  padding: 2px 6px;
+  font-family: inherit; font-size: 1.5rem;
+  background: transparent;
+  border: 0; border-bottom: 3px solid var(--ink);
+}
+.name-field input:focus { outline: none; border-bottom-color: var(--red); }
+.field-error {
+  margin: 8px 0 0; min-height: 1.2em;
+  font-size: .95rem; color: var(--red);
+}
+
+/* Columna "Què pots fer en aquesta web?" */
+.what-box h2 { margin: 0 0 18px; font-size: 1.5rem; font-weight: 700; }
+.what-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.what-list li { font-size: 1.02rem; color: #2a2a2a; }
+.what-list a {
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.what-list a:hover { color: var(--red); border-bottom-color: var(--red); }
+
+@media (max-width: 880px) {
+  .acces-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 520px) {
+  .name-field { font-size: 1.3rem; }
+  .name-field input { font-size: 1.2rem; }
+}
