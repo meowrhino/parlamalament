@@ -5,7 +5,7 @@ Generalitat (gencat). Un projecte de **Jordi Bretcha** amb la col·laboració de
 
 Lloc web **estàtic**, en HTML + CSS + JavaScript *vanilla* (sense frameworks ni pas de *build*).
 
-🔗 **En línia:** https://meowrhino.github.io/parlamalament/
+🔗 **En línia:** https://parlamalament.com (domini propi) · alternativa: https://meowrhino.github.io/parlamalament/
 
 ---
 
@@ -86,9 +86,13 @@ python3 serve.py        # → http://127.0.0.1:4321
 
 ## Desplegar
 
-És estàtic: publicat amb **GitHub Pages** (branca `main`, arrel). També es pot pujar tal qual
-a **Netlify** o **Vercel** sense configuració. Les rutes són relatives, així que funciona
-igual sota un subdirectori (`/parlamalament/`).
+És estàtic: publicat amb **GitHub Pages** (branca `main`, arrel) i **domini propi**
+`parlamalament.com` (fitxer `CNAME`). Les rutes internes són relatives, així que funciona
+igual amb domini propi o sota un subdirectori. També es pot pujar tal qual a **Netlify** o
+**Vercel** sense configuració.
+
+> Nota: les URL absolutes d'Open Graph (`og:url` / `og:image`) apunten a `parlamalament.com`.
+> Si es canvia de domini, cal actualitzar-les als `<head>` de les pàgines.
 
 ## Com editar
 
