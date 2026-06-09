@@ -39,6 +39,10 @@ parlamalament/
 ├── estadistiques.html    estadístiques de precarietat del sector
 ├── drets-i-deures.html   drets i deures dels artistes + treball parlamalamentari (trofeus)
 ├── sistema-artistic.html marc legal + directori + hemicicle "Composició actual"
+│   … i la resta de l'índex del TFM (seccions 6–15, text literal):
+├── organs.html · funcions.html · funcio-emancipativa.html · funcio-creacio.html
+├── funcio-aprovacio.html · sistema-treball.html · parlamalament-obert.html
+├── historia.html · historia-context.html · altres-institucions.html
 ├── 404.html              pàgina "no trobat" (logo centrat) · la serveix GitHub Pages
 │
 ├── assets/
