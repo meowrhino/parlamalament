@@ -5,8 +5,8 @@
 
 /* ---------- Capçalera "EL PARLAMALAMENT" ---------- */
 .site-header {
-  position: sticky; top: 0;     /* enganxat a dalt en fer scroll */
-  z-index: 30;
+  position: relative;
+  z-index: 5;
   height: var(--header-h);
   display: flex;
   align-items: center;
@@ -116,8 +116,8 @@
 
 /* ---------- Peu de pàgina (logotip) ---------- */
 .site-footer {
-  position: sticky; bottom: 0;   /* enganxat a baix en fer scroll */
-  z-index: 9;
+  position: relative;
+  z-index: 3;
   margin-top: 56px;
   background: var(--gray-bg);
   border-top: 1px solid var(--line);
