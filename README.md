@@ -35,9 +35,10 @@ parlamalament/
 ├── home.html             landing 3 · home "El Parlamalament"
 │
 │   pàgines de guia ("Per saber-ne més", data-page="guide", reaprofiten el TFG):
+├── guia.html             índex/portada de la guia (sumari + dibuix de l'edifici)
 ├── estadistiques.html    estadístiques de precarietat del sector
-├── drets-i-deures.html   drets i deures dels artistes + treball parlamalamentari
-├── sistema-artistic.html marc legal + directori d'institucions
+├── drets-i-deures.html   drets i deures dels artistes + treball parlamalamentari (trofeus)
+├── sistema-artistic.html marc legal + directori + hemicicle "Composició actual"
 │
 ├── assets/
 │   ├── css/            un full per concepte; cada pàgina només carrega els que fa servir
@@ -48,7 +49,7 @@ parlamalament/
 │   │   ├── acces.css       landing 2                                        → acces
 │   │   ├── captcha.css     captcha                                          → captcha
 │   │   ├── home.css        landing 3 (salutació, sidebar, carrusel, òrgans) → home
-│   │   └── guide.css       pàgines de guia (cinta, dades, banderins…)       → les 3 guies
+│   │   └── guide.css       pàgines de guia (cinta, dades, banderins…)       → les guies
 │   │
 │   ├── js/             mòduls ES (carregats des de main.js amb type="module")
 │   │   ├── util.js         helpers ($, $$), estat (sessionStorage), etiquetes de perfil
@@ -65,10 +66,13 @@ parlamalament/
 │       ├── captcha.jpg        foto de l'esdeveniment (captcha + carrusel)
 │       ├── logo.svg           isotip (la "cara"); també incrustat inline als HTML
 │       ├── favicon.svg        icona de pestanya
-│       ├── apple-touch-icon.png / og.svg / og.png   icones + previsualització social
+│       ├── apple-touch-icon.png / og.png   icones + previsualització social
 │       ├── mapa-poblacio.png  infografia de població (estadístiques)
 │       ├── oradors.png        pictograma del faristol (drets i deures)
-│       └── edifici-detall.png dibuix del Palau Nacional (sistema artístic)
+│       ├── edifici-detall.png dibuix del Palau Nacional (sistema artístic)
+│       ├── edifici.png        façana del Palau Nacional, portada (guia.html)
+│       ├── hemicicle.png      hemicicle "Composició actual" (sistema artístic)
+│       └── trofeu-a/bc/d.png  trofeus graduats dels grups d'artistes (drets i deures)
 │
 ├── serve.py            servidor estàtic local per provar el flux complet
 ├── originals/          materials font (PDF, wireframes) — ignorats pel repo
