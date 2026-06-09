@@ -39,6 +39,7 @@ parlamalament/
 ├── estadistiques.html    estadístiques de precarietat del sector
 ├── drets-i-deures.html   drets i deures dels artistes + treball parlamalamentari (trofeus)
 ├── sistema-artistic.html marc legal + directori + hemicicle "Composició actual"
+├── 404.html              pàgina "no trobat" (logo centrat) · la serveix GitHub Pages
 │
 ├── assets/
 │   ├── css/            un full per concepte; cada pàgina només carrega els que fa servir
@@ -49,10 +50,12 @@ parlamalament/
 │   │   ├── acces.css       landing 2                                        → acces
 │   │   ├── captcha.css     captcha                                          → captcha
 │   │   ├── home.css        landing 3 (salutació, sidebar, carrusel, òrgans) → home
-│   │   └── guide.css       pàgines de guia (cinta, dades, banderins…)       → les guies
+│   │   ├── guide.css       pàgines de guia (cinta, dades, banderins…)       → les guies
+│   │   └── notfound.css    pàgina "no trobat"                               → 404
 │   │
 │   ├── js/             mòduls ES (carregats des de main.js amb type="module")
 │   │   ├── util.js         helpers ($, $$), estat (sessionStorage), etiquetes de perfil
+│   │   ├── chrome.js       LLISTA DE SECCIONS + construeix nav i sidebar (una sola font)
 │   │   ├── nav.js          desplegables dels Ministeris
 │   │   ├── consent.js      landing 1
 │   │   ├── acces.js        landing 2 (validació del nom + navegació)
@@ -90,20 +93,26 @@ parlamalament/
   i autònom (no depèn de cap inclusió ni de JavaScript per pintar-se, cosa que manté intactes
   el SEO i les previsualitzacions en compartir).
 
-### Blocs duplicats — editar-los en bloc
+### Navegació: una sola font (`chrome.js`)
 
-Com que no hi ha pas de *build*, hi ha 4 trossos que estan copiats a diverses pàgines i que
-**s'han d'editar a totes alhora** (la pàgina **`home.html`** és la referència canònica):
+La **barra de Ministeris** (desplegables) i la **sidebar "Funcions"** es construeixen per JS
+des d'**una sola llista** —l'array `SECTIONS` de `assets/js/chrome.js`— que reprodueix l'índex
+del TFG. Així s'edita en un únic lloc i apareix igual a totes les pàgines (home + guies).
+
+**Per afegir/activar una secció:** edita `SECTIONS` a `chrome.js`. Si una secció encara no té
+pàgina, posa-li `href: null` i l'enllaç anirà a `404.html` ("no trobat"). Quan creïs la pàgina,
+canvia el `null` per `"la-teva-pagina.html"` i ja queda enllaçada a tot arreu.
+
+### Blocs encara duplicats (editar-los en bloc)
+
+Sense pas de *build*, aquests trossos segueixen copiats a cada pàgina (la **`home.html`** és la
+referència). El `<head>`/OG **ha de** quedar estàtic (els robots de previsualització no executen JS):
 
 | Bloc | On apareix | Notes |
 |---|---|---|
-| `<head>` (meta + Open Graph/Twitter) | les 7 pàgines | canvia `og:title`/`og:url` per pàgina; la resta és idèntica |
-| `<header>` + `<footer>` (chrome) | les 6 pàgines amb capçalera | idèntics byte a byte |
+| `<head>` (meta + Open Graph/Twitter) | totes les pàgines | canvia `og:title`/`og:url` per pàgina; la resta és idèntica |
+| `<header>` + `<footer>` (chrome) | totes les pàgines amb capçalera | idèntics byte a byte |
 | Isotip inline (l'SVG de la "cara") | capçalera i peu de cada pàgina | usa `currentColor` (blanc al header, vermell al peu) |
-| Menús de Ministeris + sidebar | dins de `home.html` | els 6 enllaços es repeteixen 4 + 1 cops |
-
-> S'ha optat per mantenir-ho **estàtic i documentat** (i no injectar-ho per JS) perquè és un
-> lloc petit i la simplicitat "edita i puja" compensa la repetició.
 
 ## Veure-ho en local
 
@@ -146,10 +155,12 @@ s'empaqueta cap fitxer de font per llicència; s'usa la del sistema).
 - El text del muro fa servir la variant **"antagonisme"** del PDF (pàg. 3). La variant
   *"ironia"* del wireframe és un canvi d'una línia a `index.html`.
 - El **captcha** és una broma: amb seleccionar ≥1 quadre i prémer *Verifica* ja "legitima".
-- Les **pàgines de guia** (estadístiques, drets i deures, sistema artístic) reaprofiten text
-  i gràfica del TFG i fan servir el llenguatge del document (cinta marca-pàgines, dades grans,
-  banderins). Van sobre **fons blanc net**: la foto de fons es desactiva a `guide.css` amb un
-  bloc comentat, fàcil de revertir.
+- Les **pàgines de guia** (estadístiques, drets i deures, sistema artístic, guia) reaprofiten
+  text i gràfica del TFG i el llenguatge del document (cinta marca-pàgines, dades grans,
+  banderins). Mostren la **foto de fons com la home** i el contingut s'assenta sobre un
+  **panell blanc** (paper) per llegibilitat.
+- Les **seccions sense pàgina** (índex 6–15) van a `404.html` ("No hem trobat el que vols").
+  GitHub Pages també serveix `404.html` per a qualsevol URL inexistent.
 - *"introduce tu nombre aquí"* es manté en castellà a propòsit (com al wireframe).
 - A la branca **`amb-extres`** hi ha un *snapshot* amb elements decoratius que es van retirar
   (wordmark gegant, arcs, etc.) per si es volen recuperar.

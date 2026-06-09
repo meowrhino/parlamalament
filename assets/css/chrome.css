@@ -74,7 +74,8 @@
 .ministeri-menu {
   display: none;
   position: absolute; top: 100%; left: 0;
-  min-width: 290px;
+  min-width: 320px; max-width: 380px;
+  max-height: min(70vh, 520px); overflow-y: auto;   /* el llistat complet pot ser llarg */
   padding: 8px 0;
   background: #fff;
   border: 1px solid var(--line);
@@ -90,12 +91,19 @@
   border-bottom: 1px solid var(--line);
 }
 .ministeri-menu a {
-  display: block;
+  display: flex; gap: .5em; align-items: baseline;
   padding: 9px 18px;
   font-size: .95rem;
   color: var(--ink); text-decoration: none;
 }
 .ministeri-menu a:hover { color: var(--red); background: var(--gray-bg); }
+/* número de secció (de l'índex del TFG) */
+.ministeri-menu a .nav-n { flex: none; min-width: 1.6em; color: var(--red); font-weight: 700; }
+/* seccions encara sense pàgina (van a "no trobat") */
+.ministeri-menu a.soon { color: var(--ink-soft); }
+.ministeri-menu a.soon .nav-n { color: var(--line); }
+/* secció actual */
+.ministeri-menu a[aria-current="page"] { background: var(--gray-bg); color: var(--red); font-weight: 600; }
 
 /* ---------- Peu de pàgina (logotip) ---------- */
 .site-footer {

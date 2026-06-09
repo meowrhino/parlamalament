@@ -25,6 +25,8 @@
   border-left: 3px solid transparent;
 }
 .sidebar a:hover { color: var(--red); background: var(--gray-bg); border-left-color: var(--red); }
+.sidebar a.soon { color: var(--ink-soft); }                                   /* secció sense pàgina */
+.sidebar a[aria-current="page"] { color: var(--red); font-weight: 600; border-left-color: var(--red); }
 
 .home-main { min-width: 0; }
 

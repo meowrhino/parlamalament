@@ -5,13 +5,17 @@
    ============================================================ */
 
 /* ============================================================
-   FONS NET (sense la foto) a les pàgines de guia.
-   El contingut s'assenta sobre blanc, com les pàgines del PDF.
-   👉 PER RECUPERAR LA FOTO DE FONS: esborra (o comenta) aquest bloc.
+   Les pàgines de guia mostren la FOTO de fons (com la home) i el
+   contingut s'assenta sobre un panell blanc (paper) per llegibilitat.
    ============================================================ */
-body[data-page="guide"] .brand-bg::before { display: none; }
-
-.guide { padding: 0 0 40px; }
+.guide {
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  margin: 24px auto 32px;
+  padding: 8px 36px 40px;
+  position: relative;
+  z-index: 1;
+}
 
 /* ---------- Capçalera de secció amb cinta vermella ---------- */
 .guide-head {
@@ -39,12 +43,13 @@ body[data-page="guide"] .brand-bg::before { display: none; }
   position: absolute; top: -6px; right: 0;
   display: inline-flex; align-items: center;
   min-width: 140px; text-align: center;
-  background: var(--red); color: #fff;
+  background: var(--red); color: #fff; text-decoration: none;
   font-size: .82rem; font-weight: 600; line-height: 1.2; white-space: nowrap;
   padding: 14px 18px 26px;
   border-radius: 6px 6px 0 0;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
 }
+.ribbon:hover { background: var(--red-dark); }
 .ribbon .plus {
   display: inline-grid; place-items: center;
   width: 1.05em; height: 1.05em; margin-right: 5px;
@@ -202,6 +207,7 @@ body[data-page="guide"] .brand-bg::before { display: none; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 760px) {
+  .guide { margin: 0 auto; box-shadow: none; padding: 8px 16px 32px; }
   .guide-head { padding-left: 0; padding-right: 0; }
   .guide-head::before { display: none; }
   .ribbon { position: static; display: inline-flex; margin-top: 12px; clip-path: none; border-radius: 6px; padding: 8px 14px; }

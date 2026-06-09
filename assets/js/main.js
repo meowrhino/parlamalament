@@ -4,6 +4,7 @@
 //   segons l'atribut data-page del <body>.
 //   Flux: index → acces → (captcha) → home.
 // ============================================================
+import { initChrome } from "./chrome.js";
 import { initNav } from "./nav.js";
 import { initConsent } from "./consent.js";
 import { initAcces } from "./acces.js";
@@ -18,9 +19,10 @@ const PAGE_INIT = {
 };
 
 // Pàgines de contingut sense comportament JS propi (no-op esperat).
-const KNOWN_NOOP = new Set(["guide"]);
+const KNOWN_NOOP = new Set(["guide", "notfound"]);
 
-initNav(); // la barra de Ministeris (no-op si la pàgina no en té)
+initChrome(); // construeix la barra de Ministeris (+ sidebar) des d'una sola llista
+initNav();    // activa els desplegables (ara que ja existeixen al DOM)
 
 const page = document.body.dataset.page;
 const initPage = PAGE_INIT[page];
