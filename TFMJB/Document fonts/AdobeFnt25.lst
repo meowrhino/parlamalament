@@ -1,0 +1,228 @@
+%!Adobe-FontList 1.25
+%Locale:0x409
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:/Users/mon___tardit/Documents/TFMJB/Document fonts/AdobeFnt25.lst
+FileLength:4459
+FileModTime:802380393
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:MinionPro-Regular
+FamilyName:Minion Pro
+StyleName:Regular
+MenuName:Minion Pro
+StyleBits:0
+WeightClass:400
+WidthClass:5
+AngleClass:0
+FullName:Minion Pro
+WritingScript:Roman
+OutlineFileName:/Users/mon___tardit/Documents/TFMJB/Document fonts/MinionPro-Regular.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+hasSBIX:no
+hasCOLR:no
+VariableFontType:NonVariableFont
+FileLength:218640
+FileModTime:799663711
+DesignSize:110
+NameArray:0,Mac,4,Minion Pro
+NameArray:0,Win,1,Minion Pro
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:Swiss721Black
+FamilyName:Swiss 721
+StyleName:Black
+MenuName:Swiss 721
+StyleBits:0
+WeightClass:900
+WidthClass:5
+AngleClass:0
+FullName:Swiss 721 Black
+WritingScript:Roman
+OutlineFileName:/Users/mon___tardit/Documents/TFMJB/Document fonts/Swiss 721 Black.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+hasSBIX:no
+hasCOLR:no
+VariableFontType:NonVariableFont
+FileLength:52008
+FileModTime:665726454
+NameArray:0,Mac,4,Swiss 721 Black
+NameArray:0,Win,1,Swiss 721
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:Swiss721Heavy
+FamilyName:Swiss 721
+StyleName:Heavy
+MenuName:Swiss 721
+StyleBits:0
+WeightClass:800
+WidthClass:5
+AngleClass:0
+FullName:Swiss 721 Heavy
+WritingScript:Roman
+OutlineFileName:/Users/mon___tardit/Documents/TFMJB/Document fonts/Swiss 721 Heavy.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+hasSBIX:no
+hasCOLR:no
+VariableFontType:NonVariableFont
+FileLength:51844
+FileModTime:665726454
+NameArray:0,Mac,4,Swiss 721 Heavy
+NameArray:0,Win,1,Swiss 721
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:Swiss721Light
+FamilyName:Swiss 721
+StyleName:Light
+MenuName:Swiss 721
+StyleBits:0
+WeightClass:300
+WidthClass:5
+AngleClass:0
+FullName:Swiss 721 Light
+WritingScript:Roman
+OutlineFileName:/Users/mon___tardit/Documents/TFMJB/Document fonts/Swiss 721 Light.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+hasSBIX:no
+hasCOLR:no
+VariableFontType:NonVariableFont
+FileLength:51628
+FileModTime:665726454
+NameArray:0,Mac,4,Swiss 721 Light
+NameArray:0,Win,1,Swiss 721
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:Swiss721Medium
+FamilyName:Swiss 721
+StyleName:Medium
+MenuName:Swiss 721
+StyleBits:0
+WeightClass:600
+WidthClass:5
+AngleClass:0
+FullName:Swiss 721 Medium
+WritingScript:Roman
+OutlineFileName:/Users/mon___tardit/Documents/TFMJB/Document fonts/Swiss 721 Medium.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+hasSBIX:no
+hasCOLR:no
+VariableFontType:NonVariableFont
+FileLength:53184
+FileModTime:665726454
+NameArray:0,Mac,4,Swiss 721 Medium
+NameArray:0,Win,1,Swiss 721
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:Swiss721Roman
+FamilyName:Swiss 721
+StyleName:Roman
+MenuName:Swiss 721
+StyleBits:0
+WeightClass:400
+WidthClass:5
+AngleClass:0
+FullName:Swiss 721 Roman
+WritingScript:Roman
+OutlineFileName:/Users/mon___tardit/Documents/TFMJB/Document fonts/Swiss 721 Roman.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+hasSBIX:no
+hasCOLR:no
+VariableFontType:NonVariableFont
+FileLength:52844
+FileModTime:665726454
+NameArray:0,Mac,4,Swiss 721 Roman
+NameArray:0,Win,1,Swiss 721
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:Swiss721ThinItalic
+FamilyName:Swiss 721
+StyleName:Thin Italic
+MenuName:Swiss 721
+StyleBits:1
+WeightClass:100
+WidthClass:5
+AngleClass:1
+FullName:Swiss 721 Thin Italic
+WritingScript:Roman
+OutlineFileName:/Users/mon___tardit/Documents/TFMJB/Document fonts/Swiss 721 Thin Italic.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+hasSBIX:no
+hasCOLR:no
+VariableFontType:NonVariableFont
+FileLength:54820
+FileModTime:665726454
+NameArray:0,Mac,4,Swiss 721 Thin Italic
+NameArray:0,Win,1,Swiss 721
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:Swiss721Thin
+FamilyName:Swiss 721
+StyleName:Thin
+MenuName:Swiss 721
+StyleBits:0
+WeightClass:100
+WidthClass:5
+AngleClass:0
+FullName:Swiss 721 Thin
+WritingScript:Roman
+OutlineFileName:/Users/mon___tardit/Documents/TFMJB/Document fonts/Swiss 721 Thin.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+hasSBIX:no
+hasCOLR:no
+VariableFontType:NonVariableFont
+FileLength:52608
+FileModTime:665726454
+NameArray:0,Mac,4,Swiss 721 Thin
+NameArray:0,Win,1,Swiss 721
+%EndFont
+

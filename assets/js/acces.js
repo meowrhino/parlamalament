@@ -1,30 +1,40 @@
 // ============================================================
 // acces.js — landing 2: captura el nom i la tria de perfil.
-//   · Sense nom → alerta i no avança.
+//   · Sense nom → modal d'avís (visible) i no avança.
 //   · "legitimat" passa pel captcha; la resta van directes a la home.
 // ============================================================
 import { $, $$, store } from "./util.js";
-
-const NAME_REQUIRED = "Has d’introduir un nom per identificar-te.";
 
 export function initAcces() {
   const form = $("#acces-form");
   if (!form) return;
 
   const input = $("#nom");
-  const errorBox = $("#nom-error");
+  const modal = $("#name-modal");
 
-  const setError = (msg) => {
-    if (errorBox) errorBox.textContent = msg;
-    input?.toggleAttribute("aria-invalid", Boolean(msg));
-    if (msg) input?.focus();
+  // --- Modal d'avís ---
+  let lastFocus = null;
+  const openModal = () => {
+    if (!modal) { input?.focus(); return; }
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    $("button[data-close]", modal)?.focus();
   };
-
-  input?.addEventListener("input", () => setError(""));
+  const closeModal = () => {
+    if (!modal || modal.hidden) return;
+    modal.hidden = true;
+    (lastFocus || input)?.focus();
+  };
+  modal?.addEventListener("click", (e) => {
+    if (e.target.closest("[data-close]")) closeModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+  });
 
   const go = (profile) => {
     const name = (input?.value ?? "").trim();
-    if (!name) return setError(NAME_REQUIRED);
+    if (!name) { openModal(); return; }
     store.set("pm_name", name);
     store.set("pm_profile", profile);
     window.location.href = profile === "legitimat" ? "captcha.html" : "home.html";

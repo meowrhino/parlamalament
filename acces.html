@@ -36,7 +36,7 @@
   <div class="page">
     <header class="site-header">
       <div class="container">
-        <a class="brand-title" href="home.html"><svg class="mark" viewBox="0 0 208 146" aria-hidden="true"><path fill="currentColor" d="M0 145 A104 104 0 0 1 208 145 L156 145 A52 52 0 0 0 52 145 Z"/><circle fill="currentColor" cx="46" cy="32" r="11.5"/><circle fill="currentColor" cx="160" cy="33" r="11.5"/><path fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" d="M46 23 69 3 M162 23 139 3"/></svg>El Parlamalament</a>
+        <a class="brand-title" href="home.html"><span class="mark" role="img" aria-label="El Parlamalament"></span>El Parlamalament</a>
         <div class="header-meta">
           <a href="#">Suport</a><span class="sep">|</span><a href="#" lang="ca">cat</a>
         </div>
@@ -50,10 +50,16 @@
           <p class="lead">Per accedir al dret de participar de la cultura cal que t'identifiquis
              amb un dels mecanismes d'identificació artístics vàlids.</p>
 
+          <div class="name-field">
+            <!-- castellà a propòsit (sàtira), veure README -->
+            <label for="nom" lang="es">introduce tu nombre aquí:</label>
+            <input id="nom" name="nom" type="text" autocomplete="name" maxlength="40" placeholder="el teu nom">
+          </div>
+
           <form id="acces-form" class="options" novalidate>
-            <button type="button" class="btn-option" data-profile="precari">Soc artiste precari</button>
-            <button type="button" class="btn-option" data-profile="autonom">Soc autònom també precari</button>
-            <button type="button" class="btn-option" data-profile="legitimat">Soc artiste legitimat</button>
+            <button type="button" class="btn btn-option" data-profile="precari">Soc artiste precari</button>
+            <button type="button" class="btn btn-option" data-profile="autonom">Soc autònom també precari</button>
+            <button type="button" class="btn btn-option" data-profile="legitimat">Soc artiste legitimat</button>
           </form>
 
           <p class="tramit-link">
@@ -61,13 +67,6 @@
               Accedeix al tràmit de legitimació <span class="arrow" aria-hidden="true">→</span>
             </a>
           </p>
-
-          <div class="name-field">
-            <!-- castellà a propòsit (sàtira), veure README -->
-            <label for="nom" lang="es">introduce tu nombre aquí:</label>
-            <input id="nom" name="nom" type="text" autocomplete="name" maxlength="40" aria-describedby="nom-error">
-          </div>
-          <p class="field-error" id="nom-error" role="alert" aria-live="assertive"></p>
         </section>
 
         <aside class="what-box">
@@ -84,11 +83,23 @@
     <footer class="site-footer">
       <div class="container">
         <div class="footer-brand">
-          <svg class="mark" viewBox="0 0 208 146" aria-hidden="true"><path fill="currentColor" d="M0 145 A104 104 0 0 1 208 145 L156 145 A52 52 0 0 0 52 145 Z"/><circle fill="currentColor" cx="46" cy="32" r="11.5"/><circle fill="currentColor" cx="160" cy="33" r="11.5"/><path fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" d="M46 23 69 3 M162 23 139 3"/></svg>
+          <span class="mark" role="img" aria-label="El Parlamalament"></span>
           <span class="name">Parlamalament<br>de l'Artista</span>
         </div>
       </div>
     </footer>
+
+    <!-- Modal d'avís: cal un nom per accedir -->
+    <div class="modal" id="name-modal" hidden>
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal-box" role="alertdialog" aria-modal="true"
+           aria-labelledby="name-modal-title" aria-describedby="name-modal-text">
+        <span class="mark" role="img" aria-label="El Parlamalament"></span>
+        <h2 id="name-modal-title">Un moment…</h2>
+        <p id="name-modal-text">Has d'introduir un nom per identificar-te.</p>
+        <button class="btn btn-red" type="button" data-close>D'acord</button>
+      </div>
+    </div>
   </div>
 
   <script type="module" src="assets/js/main.js"></script>

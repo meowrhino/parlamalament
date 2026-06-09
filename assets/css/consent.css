@@ -27,8 +27,10 @@
   font-weight: 500; color: var(--red);
 }
 .consent-actions {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 22px;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;
 }
+/* els dos botons, mateixa mida */
+.consent-actions .btn { flex: 1 1 0; min-width: 140px; max-width: 200px; }
 
 @media (max-width: 520px) {
   .consent-card { padding: 28px 20px 32px; }

@@ -10,31 +10,31 @@
 }
 .acces h1 { margin: 0 0 14px; font-size: 2.2rem; font-weight: 700; }
 .acces .lead {
-  max-width: 46ch; margin: 0 0 28px;
+  max-width: 46ch; margin: 0 0 26px;
   font-size: 1.02rem; color: var(--ink-body);
 }
-.options { display: grid; gap: 22px; max-width: 560px; }
-.tramit-link { margin: 26px 0 8px; }
 
-/* Camp del nom (es manté en castellà, com al wireframe, a propòsit) */
-.name-field {
-  margin: 30px 0 6px;
-  display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
-  font-size: 1.7rem;
+/* Camp del nom, com un formulari (etiqueta a sobre + caixa) */
+.name-field { margin: 0 0 24px; max-width: 420px; }
+.name-field label {
+  display: block; margin-bottom: 6px;
+  font-size: 1rem; font-weight: 600; color: var(--ink);
 }
-.name-field label { white-space: nowrap; }
 .name-field input {
-  flex: 1 1 220px; min-width: 220px;
-  padding: 2px 6px;
-  font-family: inherit; font-size: 1.5rem;
-  background: transparent;
-  border: 0; border-bottom: 3px solid var(--ink);
+  display: block; width: 100%;
+  padding: 12px 14px;
+  font-family: inherit; font-size: 1.05rem;
+  color: var(--ink); background: #fff;
+  border: 1px solid var(--line); border-radius: 4px;
 }
-.name-field input:focus { outline: none; border-bottom-color: var(--red); }
-.field-error {
-  margin: 8px 0 0; min-height: 1.2em;
-  font-size: .95rem; color: var(--red);
+.name-field input:focus {
+  outline: none; border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(219, 57, 42, .15);
 }
+
+/* Botons d'opció */
+.options { display: grid; gap: 12px; max-width: 420px; }
+.tramit-link { margin: 18px 0 8px; }
 
 /* Columna "Què pots fer en aquesta web?" */
 .what-box h2 { margin: 0 0 18px; font-size: 1.5rem; font-weight: 700; }
@@ -46,10 +46,24 @@
 }
 .what-list a:hover { color: var(--red); border-bottom-color: var(--red); }
 
+/* ---------- Modal d'avís (nom obligatori) ---------- */
+.modal[hidden] { display: none; }
+.modal {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-items: center; padding: 20px;
+}
+.modal-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, .5); }
+.modal-box {
+  position: relative; z-index: 1;
+  width: 100%; max-width: 380px;
+  background: var(--paper); box-shadow: var(--shadow);
+  border-top: 4px solid var(--red);
+  padding: 32px 28px 28px; text-align: center;
+}
+.modal-box .mark { width: 56px; color: var(--red); margin: 0 auto 16px; }
+.modal-box h2 { margin: 0 0 8px; font-size: 1.3rem; font-weight: 700; color: var(--red); }
+.modal-box p { margin: 0 0 22px; color: var(--ink-body); }
+
 @media (max-width: 880px) {
   .acces-grid { grid-template-columns: 1fr; gap: 32px; }
-}
-@media (max-width: 520px) {
-  .name-field { font-size: 1.3rem; }
-  .name-field input { font-size: 1.2rem; }
 }
