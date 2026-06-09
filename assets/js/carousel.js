@@ -38,7 +38,11 @@ export function initCarousel(root) {
   function goTo(n) {
     index = (n + slides.length) % slides.length;
     slides.forEach((s, i) => s.classList.toggle("active", i === index));
-    dots.forEach((d, i) => d.classList.toggle("active", i === index));
+    dots.forEach((d, i) => {
+      const on = i === index;
+      d.classList.toggle("active", on);
+      d.setAttribute("aria-current", on ? "true" : "false");
+    });
   }
 
   const restart = () => {
@@ -51,6 +55,9 @@ export function initCarousel(root) {
   $(".carousel-btn.prev", root)?.addEventListener("click", () => { goTo(index - 1); restart(); });
   root.addEventListener("mouseenter", () => clearInterval(timer));
   root.addEventListener("mouseleave", restart);
+  // Pausa també amb el teclat (focus dins del carrusel), no només amb el ratolí.
+  root.addEventListener("focusin", () => clearInterval(timer));
+  root.addEventListener("focusout", restart);
 
   goTo(0);
   restart();

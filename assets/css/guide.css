@@ -1,0 +1,186 @@
+/* ============================================================
+   PARLAMALAMENT · pàgines de contingut ("Guia pràctica per saber-ne més")
+   Reaprofita el llenguatge gràfic del TFG: cinta vermella, dades grans,
+   pictogrames i mapa. La carreguen estadistiques / drets-i-deures / sistema-artistic.
+   ============================================================ */
+
+/* ============================================================
+   FONS NET (sense la foto) a les pàgines de guia.
+   El contingut s'assenta sobre blanc, com les pàgines del PDF.
+   👉 PER RECUPERAR LA FOTO DE FONS: esborra (o comenta) aquest bloc.
+   ============================================================ */
+body[data-page="guide"] .brand-bg::before { display: none; }
+
+.guide { padding: 0 0 40px; }
+
+/* ---------- Capçalera de secció amb cinta vermella ---------- */
+.guide-head {
+  position: relative;
+  margin: 44px 0 44px;
+  padding-left: 84px;       /* deixa lloc al marca-pàgines penjant */
+  padding-right: 160px;
+}
+/* Marca-pàgines vermell que penja de la cantonada (com el TFG, pàg. 2/4) */
+.guide-head::before {
+  content: "";
+  position: absolute; left: 0; top: -26px;
+  width: 52px; height: 120px;
+  background: var(--red);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+}
+.guide-head .eyebrow { display: block; color: var(--red); font-weight: 400; font-size: .9rem; letter-spacing: .01em; }
+.guide-head h1 {
+  margin: 2px 0 0;
+  font-size: clamp(2.1rem, 5.5vw, 3.6rem); font-weight: 300; line-height: 1; letter-spacing: -.01em;
+  color: var(--red);
+}
+/* Pestanya "+ Per saber-ne més": cantó superior arrodonit i base bifurcada */
+.ribbon {
+  position: absolute; top: -6px; right: 0;
+  display: inline-flex; align-items: center;
+  min-width: 140px; text-align: center;
+  background: var(--red); color: #fff;
+  font-size: .82rem; font-weight: 600; line-height: 1.2; white-space: nowrap;
+  padding: 14px 18px 26px;
+  border-radius: 6px 6px 0 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+}
+.ribbon .plus {
+  display: inline-grid; place-items: center;
+  width: 1.05em; height: 1.05em; margin-right: 5px;
+  border: 1.5px solid currentColor; border-radius: 50%;
+  font-weight: 700; font-size: .85em;
+}
+
+/* ---------- Seccions ---------- */
+.guide section { margin: 0 0 64px; }
+.guide h2 {
+  font-size: clamp(1.35rem, 3vw, 1.9rem); font-weight: 700; color: var(--red);
+  margin: 0 0 22px; max-width: 30ch;
+}
+/* Com al PDF (pàg. 3): número fosc + text del títol en vermell */
+.guide h2 .num { color: var(--ink); font-weight: 800; margin-right: 8px; }
+.guide p { font-size: 1rem; line-height: 1.5; margin: 0 0 14px; max-width: 70ch; }
+/* Glossa explicativa com a bafarada rosa pàl·lid amb punxa (PDF pàg. 3) */
+.guide .note {
+  position: relative; background: #f8d7d4; color: var(--ink);
+  border-radius: 10px; padding: 14px 18px; font-size: .96rem;
+  max-width: 60ch; margin: 22px 0;
+}
+.guide .note::before {
+  content: ""; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+  border: 10px solid transparent; border-top: 0; border-bottom: 10px solid #f8d7d4;
+}
+
+/* ---------- Dades grans (infografia) ---------- */
+.stat-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px;
+  align-items: start; margin: 6px 0 20px; max-width: var(--col);
+}
+.guide .fig { font-weight: 300; letter-spacing: -.01em; line-height: 1; }
+.stat .fig { display: block; font-size: clamp(2.4rem, 6vw, 4.2rem); }
+.stat .unit { display: block; font-size: .8rem; color: var(--ink-soft); margin-top: 2px; }
+.stat .lbl { display: block; font-size: .98rem; margin-top: 8px; }
+.stat-big .fig { color: var(--red); }
+
+/* ---------- Figures / mapa ---------- */
+.guide figure { margin: 20px 0; margin-inline: 0; }
+.guide figure img { width: 100%; height: auto; display: block; }
+/* Infografies amb marc clar de paper perquè no surin com retalls */
+.guide figure.map,
+.guide figure.pictogram {
+  background: var(--paper); border: 1px solid var(--line); padding: 16px;
+}
+.guide figure.map { max-width: 420px; margin: 12px 0 24px; }
+.guide figure.pictogram { max-width: 300px; margin: 24px 0; }
+/* Dibuix decoratiu (Palau Nacional): discret, sense marc */
+.guide figure.building { max-width: 520px; opacity: .55; margin: 16px 0; background: none; border: 0; padding: 0; }
+.guide figcaption { font-size: .82rem; color: var(--ink-soft); margin-top: 8px; }
+
+/* ---------- Cites (cometes grises gegants, com el PDF pàg. 3) ---------- */
+.guide blockquote {
+  position: relative; margin: 28px auto; padding: 28px 48px;
+  border: 0; text-align: center; font-style: italic;
+  font-size: 1.4rem; color: var(--ink); max-width: 46ch;
+}
+.guide blockquote::before, .guide blockquote::after {
+  position: absolute; font-family: Georgia, "Times New Roman", serif;
+  font-size: 4.5rem; line-height: 1; color: #bdbdbd; font-style: normal;
+}
+.guide blockquote::before { content: "\201C"; left: 0; top: -6px; }
+.guide blockquote::after  { content: "\201D"; right: 0; bottom: -30px; }
+.guide blockquote .aside { display: block; font-style: normal; font-size: .95rem; color: var(--ink-soft); margin-top: 10px; }
+
+/* ---------- Bloc d'edat (Fins als 30) ---------- */
+.age {
+  display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+  border-top: 3px solid var(--ink); padding-top: 14px; margin: 10px 0 18px; max-width: var(--col);
+}
+.age .fig { font-size: clamp(2.2rem, 5vw, 3.4rem); color: var(--red); }
+.age p { margin: 0; }
+
+/* ---------- Targetes ---------- */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: var(--col); }
+.card { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--red); padding: 18px; }
+.card h3 { margin: 0 0 8px; font-size: 1rem; color: var(--red); }
+.card p { font-size: .96rem; margin: 0; }
+
+/* ---------- Carta de drets i deures (dues columnes) ---------- */
+.charter { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: var(--col); }
+/* Deures / Drets com a banderins vermells (com el TFG, pàg. 4) */
+.charter h2 {
+  display: inline-block; max-width: none;
+  background: var(--red); color: #fff;
+  font-size: 1.25rem; font-weight: 800; letter-spacing: .01em;
+  padding: 8px 34px 8px 16px; margin: 0 0 18px;
+  clip-path: polygon(0 0, 100% 0, 82% 50%, 100% 100%, 0 100%);
+}
+.charter ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
+.charter li strong { display: block; }
+.charter li span { display: block; color: var(--ink-soft); font-size: .95rem; margin-top: 2px; }
+
+/* ---------- Grups d'artistes ---------- */
+.groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; max-width: var(--col); }
+.group { background: #fff; border: 1px solid var(--line); padding: 18px; }
+.group .tag { display: inline-block; background: var(--ink); color: #fff; font-size: .72rem; font-weight: 700; padding: 4px 8px; letter-spacing: .04em; margin-bottom: 10px; }
+.group h3 { margin: 0 0 8px; font-size: 1rem; }
+.group p { font-size: .95rem; margin: 0; color: var(--ink-soft); }
+
+/* ---------- Procés (treball parlamalamentari) ---------- */
+.flow { display: flex; flex-wrap: wrap; gap: 14px; align-items: stretch; margin: 6px 0 14px; max-width: var(--col); }
+.flow .step {
+  flex: 1 1 0; min-width: 150px; background: var(--red); color: #fff;
+  padding: 14px 16px; font-weight: 600; position: relative;
+}
+.flow .step small { display: block; font-weight: 400; opacity: .9; font-size: .82rem; margin-top: 4px; }
+.relations { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 16px; max-width: var(--col); margin-top: 10px; }
+.relations div { border: 1px solid var(--line); padding: 12px; font-size: .95rem; }
+.relations strong { color: var(--red); }
+
+/* ---------- Sistema artístic ---------- */
+.law-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; max-width: var(--col); }
+.law-cols h3 { font-size: 1rem; margin: 0 0 8px; }
+.law-cols ul { margin: 0; padding-left: 18px; }
+.law-cols li { margin: 6px 0; font-size: .98rem; }
+.refs { color: var(--ink-soft); font-size: .9rem; margin: 0 0 18px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 24px; max-width: var(--col); }
+.tags span { background: var(--ink); color: #fff; font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; padding: 7px 11px; }
+.directory { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; }
+.directory section { margin: 0; }
+.directory h3 { font-size: .76rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); border-bottom: 1px solid var(--line); padding-bottom: 6px; margin: 0 0 8px; }
+.directory ul { list-style: none; margin: 0; padding: 0; }
+.directory li { font-size: .96rem; margin: 5px 0; }
+
+/* ---------- Tornar ---------- */
+.guide-back { display: inline-block; margin: 8px 0 0; color: var(--red); font-weight: 600; text-decoration: none; }
+.guide-back:hover { text-decoration: underline; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 760px) {
+  .guide-head { padding-left: 0; padding-right: 0; }
+  .guide-head::before { display: none; }
+  .ribbon { position: static; display: inline-flex; margin-top: 12px; clip-path: none; border-radius: 6px; padding: 8px 14px; }
+  .stat-grid { grid-template-columns: 1fr; gap: 18px; }
+  .charter, .law-cols { grid-template-columns: 1fr; }
+  .guide figure.building { max-width: 100%; opacity: .5; }
+}

@@ -5,7 +5,8 @@ Generalitat (gencat). Un projecte de **Jordi Bretcha** amb la col·laboració de
 
 Lloc web **estàtic**, en HTML + CSS + JavaScript *vanilla* (sense frameworks ni pas de *build*).
 
-🔗 **En línia:** https://parlamalament.com (domini propi) · alternativa: https://meowrhino.github.io/parlamalament/
+🔗 **En línia (v2):** https://meowrhino.github.io/parlamalament2/
+(La v1 — l'edició anterior amb el domini propi `parlamalament.com` — es manté en un repositori a part.)
 
 ---
 
@@ -28,10 +29,15 @@ El **nom** i el **perfil** viatgen entre pàgines amb `sessionStorage`; la home 
 
 ```
 parlamalament/
-├── index.html          landing 1 · muro "Aquesta web utilitza l'antagonisme"
-├── acces.html          landing 2 · Accés (captura el nom + tria de perfil)
-├── captcha.html        captcha · meme estil reCAPTCHA ("persones que coneixes")
-├── home.html           landing 3 · home "El Parlamalament"
+├── index.html            landing 1 · muro "Aquesta web utilitza l'antagonisme"
+├── acces.html            landing 2 · Accés (captura el nom + tria de perfil)
+├── captcha.html          captcha · meme estil reCAPTCHA ("persones que coneixes")
+├── home.html             landing 3 · home "El Parlamalament"
+│
+│   pàgines de guia ("Per saber-ne més", data-page="guide", reaprofiten el TFG):
+├── estadistiques.html    estadístiques de precarietat del sector
+├── drets-i-deures.html   drets i deures dels artistes + treball parlamalamentari
+├── sistema-artistic.html marc legal + directori d'institucions
 │
 ├── assets/
 │   ├── css/            un full per concepte; cada pàgina només carrega els que fa servir
@@ -41,7 +47,8 @@ parlamalament/
 │   │   ├── consent.css     landing 1                                        → index
 │   │   ├── acces.css       landing 2                                        → acces
 │   │   ├── captcha.css     captcha                                          → captcha
-│   │   └── home.css        landing 3 (salutació, sidebar, carrusel, òrgans) → home
+│   │   ├── home.css        landing 3 (salutació, sidebar, carrusel, òrgans) → home
+│   │   └── guide.css       pàgines de guia (cinta, dades, banderins…)       → les 3 guies
 │   │
 │   ├── js/             mòduls ES (carregats des de main.js amb type="module")
 │   │   ├── util.js         helpers ($, $$), estat (sessionStorage), etiquetes de perfil
@@ -54,8 +61,14 @@ parlamalament/
 │   │   └── main.js         punt d'entrada: dispatcha segons data-page del <body>
 │   │
 │   └── img/
-│       ├── fondo.jpg       textura de fons
-│       └── captcha.png     foto de l'esdeveniment (captcha + carrusel)
+│       ├── fondo.jpg          textura de fons (landing/app)
+│       ├── captcha.jpg        foto de l'esdeveniment (captcha + carrusel)
+│       ├── logo.svg           isotip (la "cara"); també incrustat inline als HTML
+│       ├── favicon.svg        icona de pestanya
+│       ├── apple-touch-icon.png / og.svg / og.png   icones + previsualització social
+│       ├── mapa-poblacio.png  infografia de població (estadístiques)
+│       ├── oradors.png        pictograma del faristol (drets i deures)
+│       └── edifici-detall.png dibuix del Palau Nacional (sistema artístic)
 │
 ├── serve.py            servidor estàtic local per provar el flux complet
 ├── originals/          materials font (PDF, wireframes) — ignorats pel repo
@@ -70,7 +83,23 @@ parlamalament/
 - **JS en mòduls ES:** `main.js` mira l'atribut `data-page` del `<body>` i crida només la
   inicialització d'aquella pàgina. Cada mòdul fa una cosa i s'entén per separat.
 - **Capçalera/peu repetits a cada HTML** a propòsit: així cada pàgina és un document complet
-  i autònom (no depèn de cap inclusió). És poc codi i fàcil d'editar.
+  i autònom (no depèn de cap inclusió ni de JavaScript per pintar-se, cosa que manté intactes
+  el SEO i les previsualitzacions en compartir).
+
+### Blocs duplicats — editar-los en bloc
+
+Com que no hi ha pas de *build*, hi ha 4 trossos que estan copiats a diverses pàgines i que
+**s'han d'editar a totes alhora** (la pàgina **`home.html`** és la referència canònica):
+
+| Bloc | On apareix | Notes |
+|---|---|---|
+| `<head>` (meta + Open Graph/Twitter) | les 7 pàgines | canvia `og:title`/`og:url` per pàgina; la resta és idèntica |
+| `<header>` + `<footer>` (chrome) | les 6 pàgines amb capçalera | idèntics byte a byte |
+| Isotip inline (l'SVG de la "cara") | capçalera i peu de cada pàgina | usa `currentColor` (blanc al header, vermell al peu) |
+| Menús de Ministeris + sidebar | dins de `home.html` | els 6 enllaços es repeteixen 4 + 1 cops |
+
+> S'ha optat per mantenir-ho **estàtic i documentat** (i no injectar-ho per JS) perquè és un
+> lloc petit i la simplicitat "edita i puja" compensa la repetició.
 
 ## Veure-ho en local
 
@@ -86,13 +115,14 @@ python3 serve.py        # → http://127.0.0.1:4321
 
 ## Desplegar
 
-És estàtic: publicat amb **GitHub Pages** (branca `main`, arrel) i **domini propi**
-`parlamalament.com` (fitxer `CNAME`). Les rutes internes són relatives, així que funciona
-igual amb domini propi o sota un subdirectori. També es pot pujar tal qual a **Netlify** o
-**Vercel** sense configuració.
+És estàtic: publicat amb **GitHub Pages** (branca `main`, arrel) sota el subdirectori
+`https://meowrhino.github.io/parlamalament2/`. Les rutes internes són relatives, així que
+funciona igual sota subdirectori o amb domini propi. També es pot pujar tal qual a **Netlify**
+o **Vercel** sense configuració. (No hi ha `CNAME`: aquesta edició no usa domini propi.)
 
-> Nota: les URL absolutes d'Open Graph (`og:url` / `og:image`) apunten a `parlamalament.com`.
-> Si es canvia de domini, cal actualitzar-les als `<head>` de les pàgines.
+> Nota: les URL absolutes d'Open Graph (`og:url` / `og:image`) apunten a
+> `meowrhino.github.io/parlamalament2`. Si es canvia de domini o de repositori, cal
+> actualitzar-les als `<head>` de les pàgines.
 
 ## Com editar
 
@@ -112,6 +142,10 @@ s'empaqueta cap fitxer de font per llicència; s'usa la del sistema).
 - El text del muro fa servir la variant **"antagonisme"** del PDF (pàg. 3). La variant
   *"ironia"* del wireframe és un canvi d'una línia a `index.html`.
 - El **captcha** és una broma: amb seleccionar ≥1 quadre i prémer *Verifica* ja "legitima".
+- Les **pàgines de guia** (estadístiques, drets i deures, sistema artístic) reaprofiten text
+  i gràfica del TFG i fan servir el llenguatge del document (cinta marca-pàgines, dades grans,
+  banderins). Van sobre **fons blanc net**: la foto de fons es desactiva a `guide.css` amb un
+  bloc comentat, fàcil de revertir.
 - *"introduce tu nombre aquí"* es manté en castellà a propòsit (com al wireframe).
 - A la branca **`amb-extres`** hi ha un *snapshot* amb elements decoratius que es van retirar
   (wordmark gegant, arcs, etc.) per si es volen recuperar.

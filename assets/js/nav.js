@@ -16,10 +16,16 @@ export function initNav() {
     });
   };
 
-  ministeris.forEach((m) => {
+  ministeris.forEach((m, i) => {
     const btn = $("button", m);
     if (!btn) return;
     btn.setAttribute("aria-expanded", "false");
+    // Relaciona el botó amb el seu menú per a lectors de pantalla.
+    const menu = $(".ministeri-menu", m);
+    if (menu) {
+      if (!menu.id) menu.id = `ministeri-menu-${i}`;
+      btn.setAttribute("aria-controls", menu.id);
+    }
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
       const willOpen = !m.classList.contains("open");
@@ -32,6 +38,10 @@ export function initNav() {
   // Tancar en fer clic fora o amb Escape.
   document.addEventListener("click", () => closeAll(null));
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeAll(null);
+    if (e.key !== "Escape") return;
+    // Torna el focus al botó del Ministeri obert abans de tancar-lo.
+    const openBtn = $(".ministeri.open button");
+    closeAll(null);
+    openBtn?.focus();
   });
 }

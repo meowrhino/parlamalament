@@ -17,5 +17,12 @@ const PAGE_INIT = {
   home: initHome,
 };
 
+// Pàgines de contingut sense comportament JS propi (no-op esperat).
+const KNOWN_NOOP = new Set(["guide"]);
+
 initNav(); // la barra de Ministeris (no-op si la pàgina no en té)
-PAGE_INIT[document.body.dataset.page]?.();
+
+const page = document.body.dataset.page;
+const initPage = PAGE_INIT[page];
+if (initPage) initPage();
+else if (!KNOWN_NOOP.has(page)) console.warn(`[Parlamalament] data-page desconegut: "${page}"`);

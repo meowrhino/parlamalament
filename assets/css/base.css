@@ -8,20 +8,22 @@
 
 /* ---------- Variables de disseny ---------- */
 :root {
-  --red: #c8102e;          /* vermell institucional (to gencat) */
-  --red-dark: #9c0c23;
-  --red-bright: #ff1a1a;   /* vermell viu de les caixes d'opció */
+  --red: #db392a;          /* vermell de la guia (TGF) — vermelló càlid */
+  --red-dark: #b8301f;     /* to fosc per hovers i menús */
+  --red-bright: #ff3322;   /* vermell viu de les caixes d'opció */
   --green: #2faa3a;        /* verd "acceptar" */
   --ink: #141414;          /* negre de text */
+  --ink-body: #2a2a2a;     /* gris molt fosc per a cos de text secundari */
   --ink-soft: #4a4a4a;
   --paper: #ffffff;
   --line: #d9d9d9;         /* gris de filets i vores */
   --gray-bg: #ececec;      /* fons de blocs secundaris (peu) */
-  --link: #c8102e;
+  --link: #db392a;
   --focus: #1f6dd0;        /* anell de focus accessible */
 
   --header-h: 64px;
   --maxw: 1180px;
+  --col: 900px;            /* amplada única de columna de contingut (guia) */
   --font: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
   --shadow: 0 8px 40px rgba(0, 0, 0, .12);
 }

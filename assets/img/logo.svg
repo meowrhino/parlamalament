@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 208 146" role="img" aria-label="Parlamalament de l'Artista">
+  <!-- boca (mig anell) -->
+  <path fill="currentColor" d="M0 145 A104 104 0 0 1 208 145 L156 145 A52 52 0 0 0 52 145 Z"/>
+  <!-- ulls -->
+  <circle fill="currentColor" cx="46" cy="32" r="11.5"/>
+  <circle fill="currentColor" cx="160" cy="33" r="11.5"/>
+  <!-- celles (aixecades cap al centre) -->
+  <path fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" d="M46 23 69 3 M162 23 139 3"/>
+</svg>
