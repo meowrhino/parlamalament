@@ -72,7 +72,7 @@
 }
 .carousel-dots button.active { background: #fff; }
 
-.home-cta { display: flex; justify-content: flex-end; margin-top: 22px; }
+.home-cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end; margin-top: 22px; }
 
 /* Òrgans executius (els 4 Ministeris amb les seves sigles) */
 .organs { margin-top: 44px; }
