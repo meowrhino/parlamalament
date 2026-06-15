@@ -18,9 +18,43 @@ index (landing 1)  ── acceptar / rebutjar ───────────�
                                                               ├─ Soc artiste precari ───────►  home
                                                               ├─ Soc autònom també precari ─►  home
                                                               └─ Soc artiste legitimat ─────►  captcha
-captcha ── "Verifica" (selecciona ≥1 quadre) ──────────────────────────────────────────►  home
-home (landing 3) ── "Fes el tràmit per legitimar-te" ──────────────────────────────────►  captcha
+captcha ── "Verifica" (selecciona ≥1 quadre) ──────────────────────────────────────────►  tramit-001
+home (landing 3) ── "Fes el tràmit per legitimar-te" ──────────────────────────────────►  tramit-001
+acces ── "Vincular-te amb el Parlamalament" ───────────────────────────────────────────►  vincular (002 + 003)
 ```
+
+### Els tràmits
+
+Tres tràmits administratius ficticis amb la mateixa estètica institucional (seu electrònica).
+Tots tres generen un **PDF** amb [jsPDF](https://github.com/parallax/jsPDF) (carregat per CDN).
+
+| Tràmit | Què fa | Sortida |
+|---|---|---|
+| **001** · `tramit-001.html` | Qüestionari satíric (50 preguntes puntuables ocultes + 5 obertes) → animació de verificació → **certificat**. El resultat és sempre **APROVAT**; només varia la categoria (la de més punts entre 6). | Certificat PDF |
+| **002** · `tramit-002.html` | Registre de propostes, recursos i col·laboracions (`PLM-002`). | Justificant PDF + email |
+| **003** · `tramit-003.html` | Sol·licitud de feina, encàrrec o vinculació (`PLM-003`). | Justificant PDF + email |
+
+- El **001** és autocontingut (no envia res): el càlcul de la categoria viu a `assets/js/tramit001-data.js`
+  (la **matriu de puntuacions**, font única) i `assets/js/tramit001.js`.
+- El **002/003** envien el formulari per email amb **Web3Forms** (servei sense backend) a
+  `jordi.bretcha@gmail.com`. L'*access key* viu a `WEB3FORMS_ACCESS_KEY` dins
+  `assets/js/tramit-common.js` (**ja configurada**). Si la constant torna a ser el placeholder
+  `POSA-AQUI-LA-ACCESS-KEY`, els tràmits passen a **mode de prova** (no s'envia res, però el flux es prova).
+  Els documents es comparteixen mitjançant un **enllaç** (camp `enllac_docs`): el pla gratuït de Web3Forms
+  **no permet pujar fitxers**, així que la persona enganxa un enllaç (Drive, WeTransfer, web…) en comptes
+  d'adjuntar un PDF.
+- `vincular.html` és el **hub** que enllaça els tràmits 002 i 003.
+
+#### Enviament dels formularis (Web3Forms) — ja actiu
+
+La *access key* d'en Jordi ja està posada, així que els tràmits 002/003 **envien de debò** a
+`jordi.bretcha@gmail.com`. Per regenerar-la o canviar de compte: a **https://web3forms.com** escriu
+l'email de destinació, prem **"Create Access Key"**, copia la clau que arriba a aquell Gmail i
+enganxa-la a `WEB3FORMS_ACCESS_KEY`.
+
+> **Recomanat:** al panell de Web3Forms, restringeix els dominis permesos a `meowrhino.github.io`
+> perquè ningú més pugui fer servir la clau pública. Els formularis porten un *honeypot* (`botcheck`)
+> anti-spam.
 
 El **nom** i el **perfil** viatgen entre pàgines amb `sessionStorage`; la home saluda
 *"hola {nom}, artista {perfil}"*.
@@ -33,6 +67,12 @@ parlamalament/
 ├── acces.html            landing 2 · Accés (captura el nom + tria de perfil)
 ├── captcha.html          captcha · meme estil reCAPTCHA ("persones que coneixes")
 ├── home.html             landing 3 · home "El Parlamalament"
+│
+│   tràmits (seu electrònica, generen PDF amb jsPDF):
+├── tramit-001.html       001 · certificat provisional d'autolegitimació artística
+├── tramit-002.html       002 · incorporació de propostes, recursos i col·laboracions (PLM-002)
+├── tramit-003.html       003 · sol·licitud de feina, encàrrec o vinculació (PLM-003)
+├── vincular.html         hub "Vincular-te" → tràmits 002 i 003
 │
 │   pàgines de guia ("Per saber-ne més", data-page="guide", reaprofiten el TFG):
 ├── guia.html             índex/portada de la guia (sumari + dibuix de l'edifici)
@@ -48,24 +88,30 @@ parlamalament/
 ├── assets/
 │   ├── css/            un full per concepte; cada pàgina només carrega els que fa servir
 │   │   ├── base.css        variables, reset, tipografia, fons (fondo.jpg)   → totes
-│   │   ├── chrome.css      capçalera, nav de Ministeris, peu                → acces/captcha/home
+│   │   ├── chrome.css      capçalera, nav d'Organismes, peu                 → acces/captcha/home/tràmits
 │   │   ├── components.css  botons i enllaços reutilitzables                 → index/acces/home
 │   │   ├── consent.css     landing 1                                        → index
 │   │   ├── acces.css       landing 2                                        → acces
 │   │   ├── captcha.css     captcha                                          → captcha
 │   │   ├── home.css        landing 3 (salutació, sidebar, carrusel, òrgans) → home
-│   │   ├── guide.css       pàgines de guia (cinta, dades, banderins…)       → les guies
+│   │   ├── guide.css       pàgines de guia (cinta, dades, banderins…)       → les guies + vincular
+│   │   ├── tramit.css      tràmits (assistent, formularis, animació, certificat) → tràmits 001/002/003
 │   │   └── notfound.css    pàgina "no trobat"                               → 404
 │   │
 │   ├── js/             mòduls ES (carregats des de main.js amb type="module")
 │   │   ├── util.js         helpers ($, $$), estat (sessionStorage), etiquetes de perfil
-│   │   ├── chrome.js       LLISTA DE SECCIONS + construeix nav i sidebar (una sola font)
-│   │   ├── nav.js          desplegables dels Ministeris
+│   │   ├── chrome.js       LLISTA DE SECCIONS + ORGANISMES + construeix nav i sidebar (una sola font)
+│   │   ├── nav.js          desplegables dels Organismes
 │   │   ├── consent.js      landing 1
 │   │   ├── acces.js        landing 2 (validació del nom + navegació)
-│   │   ├── captcha.js      construcció de la quadrícula + verificació
+│   │   ├── captcha.js      construcció de la quadrícula + verificació (→ tramit-001)
 │   │   ├── carousel.js     carrusel d'imatges
 │   │   ├── home.js         salutació + arrenca el carrusel
+│   │   ├── tramit-common.js  utilitats dels tràmits (animació, expedient, PDF jsPDF, enviament Web3Forms)
+│   │   ├── tramit001-data.js matriu de puntuacions del 001 (font única) + càlcul de la categoria
+│   │   ├── tramit001.js    assistent + certificat del tràmit 001
+│   │   ├── tramit002.js     config del tràmit 002 (PLM-002)
+│   │   ├── tramit003.js     config del tràmit 003 (PLM-003)
 │   │   └── main.js         punt d'entrada: dispatcha segons data-page del <body>
 │   │
 │   └── img/
@@ -99,13 +145,20 @@ parlamalament/
 
 ### Navegació: una sola font (`chrome.js`)
 
-La **barra de Ministeris** (desplegables) i la **sidebar "Funcions"** es construeixen per JS
-des d'**una sola llista** —l'array `SECTIONS` de `assets/js/chrome.js`— que reprodueix l'índex
-del TFG. Així s'edita en un únic lloc i apareix igual a totes les pàgines (home + guies).
+La **barra d'Organismes** (desplegables) i la **sidebar "Funcions"** es construeixen per JS
+des de `assets/js/chrome.js`. Hi ha dues llistes: `SECTIONS` (l'índex del TFG, que alimenta la
+sidebar i el desplegable "Guia") i `ORGANISMES` (els quatre òrgans executius —abans Ministeris—
+amb els seus subapartats propis). Així s'edita en un únic lloc i apareix igual a totes les
+pàgines (home + guies).
 
-**Per afegir/activar una secció:** edita `SECTIONS` a `chrome.js`. Si una secció encara no té
-pàgina, posa-li `href: null` i l'enllaç anirà a `404.html` ("no trobat"). Quan creïs la pàgina,
-canvia el `null` per `"la-teva-pagina.html"` i ja queda enllaçada a tot arreu.
+**Els organismes** (Institut del Malestar Cultural, Observatori de la meritocràcia, Consell
+Superior de Legitimitat Artística, Agència Estatal del Reconeixement Mutu) tenen cadascun el seu
+menú de subapartats. Cada item pot ser `{ href }`, `{ soon:true }` (encara sense pàgina → va a
+`404.html` atenuat) o `{ external:true }` (s'obre en una pestanya nova).
+
+**Per afegir/activar una secció de la guia:** edita `SECTIONS` a `chrome.js`. Si una secció encara
+no té pàgina, posa-li `href: null` i l'enllaç anirà a `404.html` ("no trobat"). Quan creïs la
+pàgina, canvia el `null` per `"la-teva-pagina.html"` i ja queda enllaçada a tot arreu.
 
 ### Blocs encara duplicats (editar-los en bloc)
 
@@ -150,6 +203,9 @@ o **Vercel** sense configuració. (No hi ha `CNAME`: aquesta edició no usa domi
 | El fons | substitueix `assets/img/fondo.jpg` |
 | La imatge i mida del captcha | atributs `data-img` / `data-cols` / `data-rows` a `captcha.html` |
 | Afegir fotos al carrusel | duplica un `<div class="slide"><img …></div>` a `home.html` (els controls s'activen sols amb ≥2 imatges) |
+| Les preguntes/puntuacions del tràmit 001 | `assets/js/tramit001-data.js` (matriu única) |
+| Activar l'enviament dels tràmits 002/003 | posa la *access key* de Web3Forms a `WEB3FORMS_ACCESS_KEY` dins `assets/js/tramit-common.js` |
+| Els organismes i els seus subapartats | array `ORGANISMES` a `assets/js/chrome.js` |
 
 La tipografia és `Helvetica Neue, Helvetica, Arial…` — la corporativa de gencat (no
 s'empaqueta cap fitxer de font per llicència; s'usa la del sistema).
@@ -158,7 +214,8 @@ s'empaqueta cap fitxer de font per llicència; s'usa la del sistema).
 
 - El text del muro fa servir la variant **"antagonisme"** del PDF (pàg. 3). La variant
   *"ironia"* del wireframe és un canvi d'una línia a `index.html`.
-- El **captcha** és una broma: amb seleccionar ≥1 quadre i prémer *Verifica* ja "legitima".
+- El **captcha** és una broma: amb seleccionar ≥1 quadre i prémer *Verifica* ja "legitima" i
+  entra al **tràmit 001** (certificat d'autolegitimació).
 - Les **pàgines de guia** (estadístiques, drets i deures, sistema artístic, guia) reaprofiten
   text i gràfica del TFG i el llenguatge del document (cinta marca-pàgines, dades grans,
   banderins). Mostren la **foto de fons com la home** i el contingut s'assenta sobre un

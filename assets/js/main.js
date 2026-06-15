@@ -10,12 +10,18 @@ import { initConsent } from "./consent.js";
 import { initAcces } from "./acces.js";
 import { initCaptcha } from "./captcha.js";
 import { initHome } from "./home.js";
+import { initTramit001 } from "./tramit001.js";
+import { initTramit002 } from "./tramit002.js";
+import { initTramit003 } from "./tramit003.js";
 
 const PAGE_INIT = {
   index: initConsent,
   acces: initAcces,
   captcha: initCaptcha,
   home: initHome,
+  tramit001: initTramit001,
+  tramit002: initTramit002,
+  tramit003: initTramit003,
 };
 
 // Pàgines de contingut sense comportament JS propi (no-op esperat).

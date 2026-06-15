@@ -87,6 +87,9 @@
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
 }
 .organs-list li { display: flex; align-items: center; gap: 12px; font-size: 1rem; }
+.organs-list a { display: flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; }
+.organs-list a:hover { color: var(--red); }
+.organs-list a:hover .sigla { background: var(--red-dark); }
 .organs-list .sigla {
   flex: none; min-width: 50px;
   padding: 5px 8px; text-align: center; letter-spacing: .04em;

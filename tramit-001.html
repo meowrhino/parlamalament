@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tràmit 001 · Autolegitimació artística · El Parlamalament de l'Artista</title>
+  <meta name="description" content="Certificat provisional d'autolegitimació artística: un tràmit per reconèixer-te a tu mateix abans que ho faci ninguna institució.">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="El Parlamalament de l'Artista">
+  <meta property="og:title" content="Tràmit 001 · Autolegitimació artística">
+  <meta property="og:description" content="Aquesta web utilitza l'antagonisme (de manera crítica).">
+  <meta property="og:locale" content="ca_ES">
+  <meta property="og:url" content="https://meowrhino.github.io/parlamalament2/tramit-001.html">
+  <meta property="og:image" content="https://meowrhino.github.io/parlamalament2/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="El Parlamalament de l'Artista">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://meowrhino.github.io/parlamalament2/assets/img/og.png">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/chrome.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/tramit.css">
+
+  <!-- Generador de PDF (sense build): jsPDF per CDN -->
+  <script defer src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+<body data-page="tramit001">
+  <a class="skip-link" href="#main">Salta al contingut</a>
+
+  <div class="brand-bg" aria-hidden="true"></div>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="container">
+        <a class="brand-title" href="home.html"><span class="mark" role="img" aria-label="El Parlamalament"></span>El Parlamalament</a>
+        <div class="header-meta">
+          <a href="#">Suport</a><span class="sep">|</span><a href="#" lang="ca">cat</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="container">
+        <div class="tramit">
+
+          <div class="tramit-masthead">
+            <div class="seu">Seu electrònica · Consell Superior de Legitimitat Artística</div>
+            <h1>Certificat provisional d'autolegitimació artística</h1>
+            <span class="codi">TRÀMIT PLM-001</span>
+          </div>
+
+          <!-- 1 · Portada -->
+          <section class="tramit-portada" data-step-view>
+            <p class="lead">Aquest tràmit et permet reconèixer-te com a artista <strong>sense esperar que cap institució ho faci per tu</strong>. Funciona com una declaració: respons un seguit de preguntes i, en acabar, s'emet un certificat.</p>
+            <ul>
+              <li>Les puntuacions són internes i <strong>no les veuràs</strong>.</li>
+              <li>El resultat és <strong>sempre APROVAT</strong>: només varia la teva classificació.</li>
+              <li>Trigaràs uns minuts. Pots dir el que vulguis: ningú ho verificarà de debò.</li>
+              <li>Aquest tràmit <strong>no envia cap dada</strong>: tot es calcula al teu navegador.</li>
+            </ul>
+
+            <div class="field" style="max-width:420px;margin:18px 0 6px">
+              <label for="nom_titular">Nom i cognoms (per al certificat)</label>
+              <input id="nom_titular" name="nom_titular" type="text" autocomplete="name" maxlength="80" placeholder="el teu nom i cognoms">
+              <p class="hint">Opcional. Si no en poses cap, el certificat dirà «Persona avaluada».</p>
+            </div>
+
+            <p class="tramit-disclaimer">La presentació d'aquest tràmit no et converteix en artista. Ja ho eres. Només ho deixa per escrit amb aparença oficial.</p>
+            <div class="start-actions">
+              <button type="button" class="btn btn-red" data-start>Comença el tràmit</button>
+              <a class="link-arrow" href="home.html">Torna al Parlamalament <span aria-hidden="true">→</span></a>
+            </div>
+          </section>
+
+          <!-- 2 · Formulari (assistent per passos) -->
+          <section class="tramit-form" data-step-view hidden>
+            <div class="tramit-progress">
+              <div class="bar"><span></span></div>
+              <p class="step-label"></p>
+            </div>
+            <form id="t001-form" novalidate>
+              <div class="tramit-step" data-step-host></div>
+              <div class="tramit-nav">
+                <button type="button" class="btn btn-ghost" data-prev>Anterior</button>
+                <button type="button" class="btn btn-red" data-next>Següent</button>
+              </div>
+              <p class="tramit-error" role="alert" aria-live="assertive"></p>
+            </form>
+          </section>
+
+          <!-- 3 · Animació de verificació -->
+          <section class="tramit-animacio" data-step-view hidden aria-live="polite">
+            <div class="anim-card">
+              <div class="anim-spinner" aria-hidden="true"></div>
+              <p class="anim-msg">Iniciant el procediment…</p>
+              <div class="anim-bar"><span></span></div>
+            </div>
+          </section>
+
+          <!-- 4 · Certificat -->
+          <section class="tramit-certificat" data-step-view hidden>
+            <div data-cert-host></div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-brand">
+          <span class="mark" role="img" aria-label="El Parlamalament"></span>
+          <span class="name">Parlamalament<br>de l'Artista</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

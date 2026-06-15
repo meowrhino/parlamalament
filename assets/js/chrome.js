@@ -24,11 +24,28 @@ export const SECTIONS = [
 
 const NOT_FOUND = "404.html";
 
-const MINISTERIS = [
-  { sigla: "MP",  nom: "Ministeri de Precarització" },
-  { sigla: "MCI", nom: "Ministeri de Corrupció i Influència" },
-  { sigla: "MCE", nom: "Ministeri de Cultura de l'Excel·lència" },
-  { sigla: "MMD", nom: "Ministeri del Malestar i el Desafecte" },
+// Organismes executius (abans Ministeris). Cada organisme té els SEUS subapartats.
+//   item: { label, href?, external?, soon? }
+//   · soon:true     → encara sense pàgina (va a 404 amb estil atenuat)
+//   · external:true → enllaç extern (s'obre en una pestanya nova)
+const ORGANISMES = [
+  { sigla: "IMC", nom: "Institut del Malestar Cultural", items: [
+      { label: "Estadístiques i informes del context", href: "estadistiques.html" },
+      { label: "Queixes i malestars (bústia PAAC)", href: "https://paac.cat/es/i/bustia-queixes/", external: true },
+  ] },
+  { sigla: "OM", nom: "Observatori de la meritocràcia", items: [
+      { label: "Ranking de convocatòries", soon: true },
+      { label: "Indicadors d'inclusió i exclusió cultural", soon: true },
+      { label: "Comptadors de propostes denegades", soon: true },
+  ] },
+  { sigla: "CSLA", nom: "Consell Superior de Legitimitat Artística", items: [
+      { label: "Tràmit 001 · Autolegitimació", href: "captcha.html" },
+  ] },
+  { sigla: "AERM", nom: "Agència Estatal del Reconeixement Mutu", items: [
+      { label: "Tràmit 001 · Autolegitimació", href: "captcha.html" },
+      { label: "Tràmit 002 · Propostes i col·laboracions", href: "tramit-002.html" },
+      { label: "Tràmit 003 · Feina i vinculació", href: "tramit-003.html" },
+  ] },
 ];
 
 // fitxer de la pàgina actual (per marcar l'enllaç actiu)
@@ -46,25 +63,45 @@ function sectionLinks() {
   }).join("");
 }
 
+// Enllaç d'un subapartat d'organisme.
+function itemLink(it) {
+  const href = it.soon ? NOT_FOUND : it.href;
+  const cls = it.soon ? ' class="soon"' : "";
+  const ext = it.external ? ' target="_blank" rel="noopener"' : "";
+  const cur = it.href && !it.external ? current(it.href) : "";
+  return `<a href="${href}"${cls}${ext}${cur}>${esc(it.label)}</a>`;
+}
+
 export function initChrome() {
   const page = document.body.dataset.page;
   if (page !== "home" && page !== "guide") return; // nomes a home i pàgines de guia
 
-  // --- Barra de Ministeris (desplegables), injectada després de la capçalera ---
+  // --- Barra d'Organismes (desplegables), injectada després de la capçalera ---
   const header = document.querySelector(".site-header");
   if (header && !document.querySelector(".ministeri-nav")) {
     const nav = document.createElement("nav");
     nav.className = "ministeri-nav";
     nav.setAttribute("aria-label", "Òrgans executius");
-    nav.innerHTML = `<div class="container">${MINISTERIS.map((m) => `
+    const organismes = ORGANISMES.map((o) => `
       <div class="ministeri">
-        <button type="button">${esc(m.nom)} <span class="caret" aria-hidden="true"></span></button>
+        <button type="button">${esc(o.nom)} <span class="caret" aria-hidden="true"></span></button>
         <div class="ministeri-menu">
-          <div class="menu-head">${m.sigla} · Òrgan executiu</div>
-          <a href="captcha.html"${current("captcha.html")}>Tràmit de Legitimació</a>
+          <div class="menu-head">${o.sigla} · Òrgan executiu</div>
+          ${o.items.map(itemLink).join("")}
+        </div>
+      </div>`).join("");
+    // Desplegable "Guia" amb l'índex de continguts (perquè les pàgines de
+    // contingut puguin navegar entre seccions sense la sidebar de la home).
+    const guia = `
+      <div class="ministeri">
+        <button type="button">Guia <span class="caret" aria-hidden="true"></span></button>
+        <div class="ministeri-menu">
+          <div class="menu-head">Continguts del Parlamalament</div>
+          <a href="guia.html"${current("guia.html")}>Sumari de la guia</a>
           ${sectionLinks()}
         </div>
-      </div>`).join("")}</div>`;
+      </div>`;
+    nav.innerHTML = `<div class="container">${organismes}${guia}</div>`;
     header.insertAdjacentElement("afterend", nav);
   }
 

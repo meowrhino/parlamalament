@@ -74,6 +74,6 @@ export function initCaptcha() {
       return;
     }
     store.set("pm_profile", "legitimat");
-    window.location.href = "home.html";
+    window.location.href = "tramit-001.html";
   });
 }

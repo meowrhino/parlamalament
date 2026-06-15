@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tràmit 003 · Feina, encàrrec o vinculació · El Parlamalament de l'Artista</title>
+  <meta name="description" content="Tràmit de sol·licitud de feina, encàrrec o vinculació amb el Parlamalament de l'Artista.">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="El Parlamalament de l'Artista">
+  <meta property="og:title" content="Tràmit 003 · Feina, encàrrec o vinculació">
+  <meta property="og:description" content="Aquesta web utilitza l'antagonisme (de manera crítica).">
+  <meta property="og:locale" content="ca_ES">
+  <meta property="og:url" content="https://meowrhino.github.io/parlamalament2/tramit-003.html">
+  <meta property="og:image" content="https://meowrhino.github.io/parlamalament2/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="El Parlamalament de l'Artista">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://meowrhino.github.io/parlamalament2/assets/img/og.png">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/chrome.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/tramit.css">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+<body data-page="tramit003">
+  <a class="skip-link" href="#main">Salta al contingut</a>
+
+  <div class="brand-bg" aria-hidden="true"></div>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="container">
+        <a class="brand-title" href="home.html"><span class="mark" role="img" aria-label="El Parlamalament"></span>El Parlamalament</a>
+        <div class="header-meta">
+          <a href="#">Suport</a><span class="sep">|</span><a href="#" lang="ca">cat</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="container">
+        <div class="tramit">
+
+          <div class="tramit-masthead">
+            <div class="seu">Seu electrònica · Agència Estatal del Reconeixement Mutu</div>
+            <h1>Sol·licitud de feina, encàrrec o vinculació</h1>
+            <span class="codi">TRÀMIT PLM-003</span>
+          </div>
+
+          <!-- 1 · Formulari -->
+          <section class="tramit-form" data-step-view>
+            <p class="lead" style="padding-top:22px">Aquest tràmit <strong>no és una oferta laboral</strong>. Funciona com un registre de candidatures i interessos: hi manifestes el teu desig de treballar, col·laborar o vincular-te amb el Parlamalament.</p>
+
+            <form id="t003-form" novalidate>
+              <!-- Honeypot anti-spam (ocult): si s'omple, Web3Forms descarta l'enviament -->
+              <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+              <p class="hint">Els camps marcats amb <span class="req">*</span> són obligatoris.</p>
+
+              <fieldset class="field-group">
+                <legend>Identificació</legend>
+                <div class="grid-2">
+                  <div class="field">
+                    <label for="nom_cognoms">Nom i cognoms <span class="req">*</span></label>
+                    <input id="nom_cognoms" name="nom_cognoms" type="text" autocomplete="name" required>
+                  </div>
+                  <div class="field">
+                    <label for="correu">Correu electrònic <span class="req">*</span></label>
+                    <input id="correu" name="correu" type="email" autocomplete="email" required>
+                  </div>
+                  <div class="field">
+                    <label for="nom_artistic">Nom artístic</label>
+                    <input id="nom_artistic" name="nom_artistic" type="text">
+                  </div>
+                  <div class="field">
+                    <label for="telefon">Telèfon</label>
+                    <input id="telefon" name="telefon" type="tel" autocomplete="tel">
+                  </div>
+                  <div class="field">
+                    <label for="municipi">Municipi</label>
+                    <input id="municipi" name="municipi" type="text">
+                  </div>
+                  <div class="field">
+                    <label for="web">Web</label>
+                    <input id="web" name="web" type="url" placeholder="https://">
+                  </div>
+                  <div class="field">
+                    <label for="portfoli">Portfoli</label>
+                    <input id="portfoli" name="portfoli" type="url" placeholder="https://">
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="field-group">
+                <legend>Tipus de vinculació desitjada</legend>
+                <div class="check-grid">
+                  <label class="check"><input type="checkbox" name="vinculacio" value="Feina remunerada"> Feina remunerada</label>
+                  <label class="check"><input type="checkbox" name="vinculacio" value="Col·laboració professional"> Col·laboració professional</label>
+                  <label class="check"><input type="checkbox" name="vinculacio" value="Participació puntual"> Participació puntual</label>
+                  <label class="check"><input type="checkbox" name="vinculacio" value="Projecte de recerca"> Projecte de recerca</label>
+                  <label class="check"><input type="checkbox" name="vinculacio" value="Mediació"> Mediació</label>
+                  <label class="check"><input type="checkbox" name="vinculacio" value="Producció"> Producció</label>
+                  <label class="check"><input type="checkbox" name="vinculacio" value="Comunicació"> Comunicació</label>
+                  <label class="check"><input type="checkbox" name="vinculacio" value="Disseny"> Disseny</label>
+                  <label class="check"><input type="checkbox" name="vinculacio" value="Comissariat"> Comissariat</label>
+                  <label class="check"><input type="checkbox" name="vinculacio" value="Gestió cultural"> Gestió cultural</label>
+                  <label class="check"><input type="checkbox" name="vinculacio" value="Suport tècnic"> Suport tècnic</label>
+                  <label class="check"><input type="checkbox" name="vinculacio" value="Voluntariat"> Voluntariat</label>
+                  <label class="check"><input type="checkbox" name="vinculacio" value="Altres"> Altres</label>
+                </div>
+              </fieldset>
+
+              <fieldset class="field-group">
+                <legend>Perfil</legend>
+                <div class="field">
+                  <label for="practica">Com descriuries la teva pràctica o experiència?</label>
+                  <textarea id="practica" name="practica" rows="4"></textarea>
+                </div>
+                <div class="field">
+                  <label for="competencies">Quines competències pots aportar?</label>
+                  <textarea id="competencies" name="competencies" rows="4"></textarea>
+                </div>
+                <div class="field">
+                  <label for="ambits">Quins àmbits t'interessen especialment?</label>
+                  <textarea id="ambits" name="ambits" rows="3"></textarea>
+                </div>
+              </fieldset>
+
+              <fieldset class="field-group">
+                <legend>Disponibilitat</legend>
+                <div class="field">
+                  <p class="sublabel" id="lbl-modalitat">Modalitat</p>
+                  <div class="check-grid" role="radiogroup" aria-labelledby="lbl-modalitat">
+                    <label class="check"><input type="radio" name="modalitat" value="Presencial"> Presencial</label>
+                    <label class="check"><input type="radio" name="modalitat" value="En línia"> En línia</label>
+                    <label class="check"><input type="radio" name="modalitat" value="Híbrida"> Híbrida</label>
+                    <label class="check"><input type="radio" name="modalitat" value="Indiferent"> Indiferent</label>
+                  </div>
+                </div>
+                <div class="field">
+                  <p class="sublabel" id="lbl-temporal">Disponibilitat temporal</p>
+                  <div class="check-grid" role="radiogroup" aria-labelledby="lbl-temporal">
+                    <label class="check"><input type="radio" name="temporal" value="Puntual"> Puntual</label>
+                    <label class="check"><input type="radio" name="temporal" value="Projecte concret"> Projecte concret</label>
+                    <label class="check"><input type="radio" name="temporal" value="Mitjà termini"> Mitjà termini</label>
+                    <label class="check"><input type="radio" name="temporal" value="Llarga durada"> Llarga durada</label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="field-group">
+                <legend>Motivació</legend>
+                <div class="field">
+                  <label for="motivacio">Per què t'agradaria col·laborar amb el Parlamalament?</label>
+                  <textarea id="motivacio" name="motivacio" rows="4"></textarea>
+                </div>
+                <div class="field">
+                  <label for="aportacio">Què creus que pots aportar?</label>
+                  <textarea id="aportacio" name="aportacio" rows="4"></textarea>
+                </div>
+                <div class="field">
+                  <label for="aprenentatge">Què t'agradaria aprendre o obtenir?</label>
+                  <textarea id="aprenentatge" name="aprenentatge" rows="3"></textarea>
+                </div>
+              </fieldset>
+
+              <fieldset class="field-group">
+                <legend>Pregunta complementària</legend>
+                <div class="field">
+                  <label for="alternativa">Si el Parlamalament no pogués oferir-te feina, quina altra forma de vinculació consideraries útil?</label>
+                  <textarea id="alternativa" name="alternativa" rows="3"></textarea>
+                </div>
+              </fieldset>
+
+              <fieldset class="field-group">
+                <legend>Documents</legend>
+                <div class="field">
+                  <label for="enllac_docs">Enllaç al CV o dossier (opcional)</label>
+                  <input id="enllac_docs" name="enllac_docs" type="url" placeholder="https://… (Drive, web, dossier…)">
+                  <p class="hint">Enganxa un enllaç on es puguin consultar el teu CV o dossier. (El portfoli el pots posar al camp de dalt.)</p>
+                </div>
+              </fieldset>
+
+              <fieldset class="field-group">
+                <legend>Protecció de dades</legend>
+                <p class="tramit-disclaimer" style="margin-top:0">
+                  Les dades d'aquest formulari s'envien per correu electrònic a
+                  <strong>Jordi Bretcha</strong> (jordi.bretcha@gmail.com), responsable del
+                  Parlamalament de l'Artista, amb l'única finalitat de gestionar la teva sol·licitud. La base
+                  legal és el teu consentiment. No se cedeixen a tercers i es conserven només el temps
+                  necessari per atendre-la. Pots exercir els drets d'accés, rectificació i supressió
+                  escrivint a jordi.bretcha@gmail.com.
+                </p>
+                <label class="check">
+                  <input type="checkbox" name="consentiment" value="Accepto l'enviament de les dades a Jordi Bretcha" required>
+                  He llegit i accepto que les meves dades s'enviïn a Jordi Bretcha per gestionar aquest tràmit. <span class="req">*</span>
+                </label>
+              </fieldset>
+
+              <div class="tramit-nav" style="justify-content:flex-end">
+                <button type="submit" class="btn btn-red" data-submit>Registra la sol·licitud</button>
+              </div>
+              <p class="tramit-error" role="alert" aria-live="assertive"></p>
+            </form>
+          </section>
+
+          <!-- 2 · Animació -->
+          <section class="tramit-animacio" data-step-view hidden aria-live="polite">
+            <div class="anim-card">
+              <div class="anim-spinner" aria-hidden="true"></div>
+              <p class="anim-msg">Iniciant el registre…</p>
+              <div class="anim-bar"><span></span></div>
+            </div>
+          </section>
+
+          <!-- 3 · Justificant -->
+          <section class="tramit-justificant" data-step-view hidden>
+            <div data-justif-host></div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-brand">
+          <span class="mark" role="img" aria-label="El Parlamalament"></span>
+          <span class="name">Parlamalament<br>de l'Artista</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

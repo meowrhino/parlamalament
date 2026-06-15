@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tràmit 002 · Propostes i col·laboracions · El Parlamalament de l'Artista</title>
+  <meta name="description" content="Tràmit d'incorporació de propostes, recursos i col·laboracions al Parlamalament de l'Artista.">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="El Parlamalament de l'Artista">
+  <meta property="og:title" content="Tràmit 002 · Propostes i col·laboracions">
+  <meta property="og:description" content="Aquesta web utilitza l'antagonisme (de manera crítica).">
+  <meta property="og:locale" content="ca_ES">
+  <meta property="og:url" content="https://meowrhino.github.io/parlamalament2/tramit-002.html">
+  <meta property="og:image" content="https://meowrhino.github.io/parlamalament2/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="El Parlamalament de l'Artista">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://meowrhino.github.io/parlamalament2/assets/img/og.png">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/chrome.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/tramit.css">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+<body data-page="tramit002">
+  <a class="skip-link" href="#main">Salta al contingut</a>
+
+  <div class="brand-bg" aria-hidden="true"></div>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="container">
+        <a class="brand-title" href="home.html"><span class="mark" role="img" aria-label="El Parlamalament"></span>El Parlamalament</a>
+        <div class="header-meta">
+          <a href="#">Suport</a><span class="sep">|</span><a href="#" lang="ca">cat</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="container">
+        <div class="tramit">
+
+          <div class="tramit-masthead">
+            <div class="seu">Seu electrònica · Agència Estatal del Reconeixement Mutu</div>
+            <h1>Incorporació de propostes, recursos i col·laboracions</h1>
+            <span class="codi">TRÀMIT PLM-002</span>
+          </div>
+
+          <!-- 1 · Formulari -->
+          <section class="tramit-form" data-step-view>
+            <p class="lead" style="padding-top:22px">Aquest tràmit funciona com un <strong>registre d'entrada</strong>. Pots presentar propostes, recursos, iniciatives o possibilitats de col·laboració. No hi ha aprovació automàtica: el que entra, consta.</p>
+
+            <form id="t002-form" novalidate>
+              <!-- Honeypot anti-spam (ocult): si s'omple, Web3Forms descarta l'enviament -->
+              <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+              <p class="hint">Els camps marcats amb <span class="req">*</span> són obligatoris.</p>
+
+              <fieldset class="field-group">
+                <legend>Identificació</legend>
+                <div class="grid-2">
+                  <div class="field">
+                    <label for="nom_cognoms">Nom i cognoms <span class="req">*</span></label>
+                    <input id="nom_cognoms" name="nom_cognoms" type="text" autocomplete="name" required>
+                  </div>
+                  <div class="field">
+                    <label for="correu">Correu electrònic <span class="req">*</span></label>
+                    <input id="correu" name="correu" type="email" autocomplete="email" required>
+                  </div>
+                  <div class="field">
+                    <label for="nom_artistic">Nom artístic</label>
+                    <input id="nom_artistic" name="nom_artistic" type="text">
+                  </div>
+                  <div class="field">
+                    <label for="telefon">Telèfon</label>
+                    <input id="telefon" name="telefon" type="tel" autocomplete="tel">
+                  </div>
+                  <div class="field">
+                    <label for="municipi">Municipi</label>
+                    <input id="municipi" name="municipi" type="text">
+                  </div>
+                  <div class="field">
+                    <label for="web">Web</label>
+                    <input id="web" name="web" type="url" placeholder="https://">
+                  </div>
+                  <div class="field">
+                    <label for="xarxes">Xarxes socials</label>
+                    <input id="xarxes" name="xarxes" type="text">
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="field-group">
+                <legend>Tipologia de la proposta</legend>
+                <div class="check-grid">
+                  <label class="check"><input type="checkbox" name="tipologia" value="Proposta artística"> Proposta artística</label>
+                  <label class="check"><input type="checkbox" name="tipologia" value="Projecte"> Projecte</label>
+                  <label class="check"><input type="checkbox" name="tipologia" value="Activitat"> Activitat</label>
+                  <label class="check"><input type="checkbox" name="tipologia" value="Investigació"> Investigació</label>
+                  <label class="check"><input type="checkbox" name="tipologia" value="Text"> Text</label>
+                  <label class="check"><input type="checkbox" name="tipologia" value="Publicació"> Publicació</label>
+                  <label class="check"><input type="checkbox" name="tipologia" value="Convocatòria"> Convocatòria</label>
+                  <label class="check"><input type="checkbox" name="tipologia" value="Recurs"> Recurs</label>
+                  <label class="check"><input type="checkbox" name="tipologia" value="Eina"> Eina</label>
+                  <label class="check"><input type="checkbox" name="tipologia" value="Documentació"> Documentació</label>
+                  <label class="check"><input type="checkbox" name="tipologia" value="Arxiu"> Arxiu</label>
+                  <label class="check"><input type="checkbox" name="tipologia" value="Cas d'estudi"> Cas d'estudi</label>
+                  <label class="check"><input type="checkbox" name="tipologia" value="Proposta de col·laboració"> Proposta de col·laboració</label>
+                  <label class="check"><input type="checkbox" name="tipologia" value="Proposta de debat"> Proposta de debat</label>
+                  <label class="check"><input type="checkbox" name="tipologia" value="Proposta d'acció col·lectiva"> Proposta d'acció col·lectiva</label>
+                  <label class="check"><input type="checkbox" name="tipologia" value="Altres"> Altres</label>
+                </div>
+              </fieldset>
+
+              <fieldset class="field-group">
+                <legend>Què us agradaria que passés amb aquesta proposta?</legend>
+                <div class="check-grid">
+                  <label class="check"><input type="checkbox" name="relacio" value="Que sigui coneguda"> Que sigui coneguda</label>
+                  <label class="check"><input type="checkbox" name="relacio" value="Que sigui compartida"> Que sigui compartida</label>
+                  <label class="check"><input type="checkbox" name="relacio" value="Que sigui debatuda"> Que sigui debatuda</label>
+                  <label class="check"><input type="checkbox" name="relacio" value="Que sigui desenvolupada"> Que sigui desenvolupada</label>
+                  <label class="check"><input type="checkbox" name="relacio" value="Que generi col·laboracions"> Que generi col·laboracions</label>
+                  <label class="check"><input type="checkbox" name="relacio" value="Que sigui incorporada al projecte"> Que sigui incorporada al projecte</label>
+                  <label class="check"><input type="checkbox" name="relacio" value="Que simplement consti en registre"> Que simplement consti en registre</label>
+                  <label class="check"><input type="checkbox" name="relacio" value="No ho sé encara"> No ho sé encara</label>
+                </div>
+              </fieldset>
+
+              <fieldset class="field-group">
+                <legend>Descripció</legend>
+                <div class="field">
+                  <label for="titol">Títol</label>
+                  <input id="titol" name="titol" type="text">
+                </div>
+                <div class="field">
+                  <label for="resum">Resum</label>
+                  <input id="resum" name="resum" type="text">
+                </div>
+                <div class="field">
+                  <label for="descripcio">Descripció detallada</label>
+                  <textarea id="descripcio" name="descripcio" rows="5"></textarea>
+                </div>
+              </fieldset>
+
+              <fieldset class="field-group">
+                <legend>Necessitats</legend>
+                <div class="check-grid">
+                  <label class="check"><input type="checkbox" name="necessitats" value="Difusió"> Difusió</label>
+                  <label class="check"><input type="checkbox" name="necessitats" value="Participants"> Participants</label>
+                  <label class="check"><input type="checkbox" name="necessitats" value="Aliances"> Aliances</label>
+                  <label class="check"><input type="checkbox" name="necessitats" value="Producció"> Producció</label>
+                  <label class="check"><input type="checkbox" name="necessitats" value="Espai"> Espai</label>
+                  <label class="check"><input type="checkbox" name="necessitats" value="Finançament"> Finançament</label>
+                  <label class="check"><input type="checkbox" name="necessitats" value="Mediació"> Mediació</label>
+                  <label class="check"><input type="checkbox" name="necessitats" value="Assessorament"> Assessorament</label>
+                  <label class="check"><input type="checkbox" name="necessitats" value="Altres"> Altres</label>
+                </div>
+              </fieldset>
+
+              <fieldset class="field-group">
+                <legend>Recursos aportats</legend>
+                <div class="check-grid">
+                  <label class="check"><input type="checkbox" name="recursos" value="Coneixement"> Coneixement</label>
+                  <label class="check"><input type="checkbox" name="recursos" value="Temps"> Temps</label>
+                  <label class="check"><input type="checkbox" name="recursos" value="Xarxa"> Xarxa</label>
+                  <label class="check"><input type="checkbox" name="recursos" value="Documentació"> Documentació</label>
+                  <label class="check"><input type="checkbox" name="recursos" value="Espai"> Espai</label>
+                  <label class="check"><input type="checkbox" name="recursos" value="Equipament"> Equipament</label>
+                  <label class="check"><input type="checkbox" name="recursos" value="Producció"> Producció</label>
+                  <label class="check"><input type="checkbox" name="recursos" value="Altres"> Altres</label>
+                </div>
+              </fieldset>
+
+              <fieldset class="field-group">
+                <legend>Expectativa</legend>
+                <div class="field">
+                  <label for="expectativa">Per què presenteu aquest tràmit?</label>
+                  <textarea id="expectativa" name="expectativa" rows="4"></textarea>
+                </div>
+              </fieldset>
+
+              <fieldset class="field-group">
+                <legend>Documents</legend>
+                <div class="field">
+                  <label for="enllac_docs">Enllaç als documents (opcional)</label>
+                  <input id="enllac_docs" name="enllac_docs" type="url" placeholder="https://… (Drive, WeTransfer, web…)">
+                  <p class="hint">Si tens PDFs o materials per compartir, enganxa aquí un enllaç on es puguin consultar o descarregar.</p>
+                </div>
+              </fieldset>
+
+              <fieldset class="field-group">
+                <legend>Protecció de dades</legend>
+                <p class="tramit-disclaimer" style="margin-top:0">
+                  Les dades d'aquest formulari s'envien per correu electrònic a
+                  <strong>Jordi Bretcha</strong> (jordi.bretcha@gmail.com), responsable del
+                  Parlamalament de l'Artista, amb l'única finalitat de gestionar la teva proposta. La base
+                  legal és el teu consentiment. No se cedeixen a tercers i es conserven només el temps
+                  necessari per atendre-la. Pots exercir els drets d'accés, rectificació i supressió
+                  escrivint a jordi.bretcha@gmail.com.
+                </p>
+                <label class="check">
+                  <input type="checkbox" name="consentiment" value="Accepto l'enviament de les dades a Jordi Bretcha" required>
+                  He llegit i accepto que les meves dades s'enviïn a Jordi Bretcha per gestionar aquest tràmit. <span class="req">*</span>
+                </label>
+              </fieldset>
+
+              <div class="tramit-nav" style="justify-content:flex-end">
+                <button type="submit" class="btn btn-red" data-submit>Registra la proposta</button>
+              </div>
+              <p class="tramit-error" role="alert" aria-live="assertive"></p>
+            </form>
+          </section>
+
+          <!-- 2 · Animació -->
+          <section class="tramit-animacio" data-step-view hidden aria-live="polite">
+            <div class="anim-card">
+              <div class="anim-spinner" aria-hidden="true"></div>
+              <p class="anim-msg">Iniciant el registre…</p>
+              <div class="anim-bar"><span></span></div>
+            </div>
+          </section>
+
+          <!-- 3 · Justificant -->
+          <section class="tramit-justificant" data-step-view hidden>
+            <div data-justif-host></div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-brand">
+          <span class="mark" role="img" aria-label="El Parlamalament"></span>
+          <span class="name">Parlamalament<br>de l'Artista</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
