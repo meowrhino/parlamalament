@@ -3,7 +3,7 @@
    ============================================================ */
 
 /* Salutació personalitzada (nom + perfil) */
-.greeting { padding: 34px 0 6px; }
+.greeting { padding-block: 34px 6px; }   /* manté el padding-inline del .container */
 .greeting h1 { margin: 0; font-size: clamp(1.8rem, 4.2vw, 2.7rem); font-weight: 400; }
 .greeting .sub { margin: 6px 0 0; font-size: 1.1rem; color: var(--ink-soft); }
 

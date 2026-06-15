@@ -57,6 +57,26 @@
   border-top: 1px solid rgba(255,255,255,.25);
 }
 .ministeri-nav .container { display: flex; flex-wrap: wrap; }
+
+/* Botó hamburguesa: amagat a escriptori; en mòbil plega/desplega tota la barra */
+.nav-toggle {
+  display: none;
+  width: 100%;
+  appearance: none; cursor: pointer; border: 0;
+  padding: 13px 24px;
+  align-items: center; justify-content: space-between;
+  font-size: .95rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  color: #fff; background: transparent;
+}
+.nav-toggle:hover { background: var(--red-dark); }
+.nav-toggle:focus-visible { outline-color: #fff; }
+.nav-toggle .caret {
+  width: 0; height: 0;
+  border-left: 6px solid transparent; border-right: 6px solid transparent;
+  border-top: 7px solid #fff; transition: transform .15s ease;
+}
+.ministeri-nav.nav-open .nav-toggle .caret { transform: rotate(180deg); }
+
 .ministeri { position: relative; }
 /* El Ministeri obert s'eleva perquè el seu desplegable tapi la resta de
    botons (inclosa la 2a fila quan la barra fa wrap). */
@@ -137,8 +157,10 @@
 @media (max-width: 880px) {
   .brand-title { font-size: 1.15rem; }
 
-  /* La barra de Ministeris passa a acordió vertical */
-  .ministeri-nav .container { flex-direction: column; }
+  /* Tots els organismes queden dins d'UN sol desplegable (hamburguesa) */
+  .nav-toggle { display: flex; }
+  .ministeri-nav .container { display: none; flex-direction: column; }
+  .ministeri-nav.nav-open .container { display: flex; }
   .ministeri { width: 100%; }
   .ministeri > button {
     width: 100%; justify-content: space-between;
@@ -156,4 +178,11 @@
   .ministeri-menu a:focus-visible { outline-color: #fff; }
 
   .site-footer .container { gap: 16px; }
+}
+
+/* En mòbil estret, amaga el text "EL PARLAMALAMENT" i deixa només el logotip
+   (el text es desbordava sobre "Suport | cat"). */
+@media (max-width: 600px) {
+  .brand-title { font-size: 0; gap: 0; }
+  .brand-title .mark { width: 34px; }
 }

@@ -101,7 +101,12 @@ export function initChrome() {
           ${sectionLinks()}
         </div>
       </div>`;
-    nav.innerHTML = `<div class="container">${organismes}${guia}</div>`;
+    // Botó hamburguesa (només visible en mòbil via CSS): plega/desplega tota la
+    // barra d'organismes en un sol desplegable.
+    const toggle =
+      `<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="organismes-bar">` +
+      `<span>Organismes</span><span class="caret" aria-hidden="true"></span></button>`;
+    nav.innerHTML = `${toggle}<div class="container" id="organismes-bar">${organismes}${guia}</div>`;
     header.insertAdjacentElement("afterend", nav);
   }
 

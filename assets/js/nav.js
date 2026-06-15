@@ -35,6 +35,16 @@ export function initNav() {
     });
   });
 
+  // Hamburguesa (mòbil): plega/desplega tota la barra d'organismes.
+  const nav = document.querySelector(".ministeri-nav");
+  const toggle = nav?.querySelector(".nav-toggle");
+  toggle?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const open = nav.classList.toggle("nav-open");
+    toggle.setAttribute("aria-expanded", String(open));
+    if (!open) closeAll(null); // en plegar, tanca també els submenús
+  });
+
   // Tancar en fer clic fora o amb Escape.
   document.addEventListener("click", () => closeAll(null));
   document.addEventListener("keydown", (e) => {
