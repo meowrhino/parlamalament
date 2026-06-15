@@ -40,11 +40,10 @@ const ORGANISMES = [
       { label: "Comptadors de propostes denegades", soon: true },
   ] },
   { sigla: "CSLA", nom: "Consell Superior de Legitimitat Artística", items: [
-      { label: "Tràmit 001 · Autolegitimació", href: "captcha.html" },
+      { label: "Tràmit 001 · Autolegitimació", href: "tramit-001.html" },
   ] },
   { sigla: "AERM", nom: "Agència Estatal del Reconeixement Mutu", items: [
-      { label: "Tràmit 001 · Autolegitimació", href: "captcha.html" },
-      { label: "Tràmit 002 · Propostes i col·laboracions", href: "tramit-002.html" },
+      { label: "Tràmit 002 · Incorporació de propostes, recursos i col·laboracions", href: "tramit-002.html" },
       { label: "Tràmit 003 · Feina, encàrrec o vinculació", href: "tramit-003.html" },
   ] },
 ];
@@ -74,7 +73,9 @@ function itemLink(it) {
 
 export function initChrome() {
   const page = document.body.dataset.page;
-  if (page !== "home" && page !== "guide") return; // nomes a home i pàgines de guia
+  // A home, pàgines de guia i pàgines de tràmit (perquè no siguin culs-de-sac).
+  const WITH_NAV = new Set(["home", "guide", "tramit001", "tramit002", "tramit003"]);
+  if (!WITH_NAV.has(page)) return;
 
   // --- Barra d'Organismes (desplegables), injectada després de la capçalera ---
   const header = document.querySelector(".site-header");
@@ -117,7 +118,7 @@ export function initChrome() {
       `<li><a href="${href}"${soon ? ' class="soon"' : ""}${current(href)}>${label}</a></li>`;
     sideUl.innerHTML =
       item("guia.html", "Guia (sumari)") +
-      item("captcha.html", "Tràmit de Legitimació") +
+      item("tramit-001.html", "Tràmit 001 · Autolegitimació") +
       SECTIONS.map((s) =>
         item(s.href || NOT_FOUND, `${s.n}. ${esc(s.title)}`, !s.href)
       ).join("");
