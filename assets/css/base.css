@@ -27,6 +27,20 @@
   --col: 900px;            /* amplada única de columna de contingut (guia) */
   --font: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
   --shadow: 0 8px 40px rgba(0, 0, 0, .12);
+
+  /* Escala d'espaiat (ritme vertical uniforme entre seccions) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+
+  /* Superfícies tènues de marca (abans valors hardcodejats repartits) */
+  --red-tint: #fdeceb;     /* selecció (.opt.sel) */
+  --red-bubble: #f8d7d4;   /* bafarada rosa (.note) */
+  --paper-soft: #f7f4f2;   /* panells (.field-group) */
+  --paper-hover: #fafafa;  /* hovers tènues (.check:hover) */
 }
 
 /* ---------- Reset i base ---------- */

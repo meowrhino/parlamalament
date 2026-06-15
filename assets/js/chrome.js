@@ -4,6 +4,7 @@
 //   s'edita en un únic lloc. Conforme creixi el TFG, només cal afegir
 //   pàgines aquí (href) i deixaran d'anar a la pàgina "no trobat".
 // ============================================================
+import { escapeHtml as esc } from "./util.js";
 
 // Índex de la guia (seccions del TFG). href:null = encara sense pàgina.
 export const SECTIONS = [
@@ -50,7 +51,6 @@ const ORGANISMES = [
 
 // fitxer de la pàgina actual (per marcar l'enllaç actiu)
 const here = location.pathname.split("/").pop() || "index.html";
-const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const current = (href) => (href === here ? ' aria-current="page"' : "");
 
 // Enllaços de secció (numerats). Les que no tenen pàgina van a "no trobat".

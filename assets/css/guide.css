@@ -20,7 +20,7 @@
 /* ---------- Capçalera de secció amb cinta vermella ---------- */
 .guide-head {
   position: relative;
-  margin: 44px 0 44px;
+  margin: var(--space-5) 0;
   padding-left: 84px;       /* deixa lloc al marca-pàgines penjant */
   padding-right: 160px;
 }
@@ -58,7 +58,7 @@
 }
 
 /* ---------- Seccions ---------- */
-.guide section { margin: 0 0 64px; }
+.guide section { margin: 0 0 var(--space-6); }
 .guide h2 {
   font-size: clamp(1.35rem, 3vw, 1.9rem); font-weight: 700; color: var(--red);
   margin: 0 0 22px; max-width: 30ch;
@@ -68,13 +68,13 @@
 .guide p { font-size: 1rem; line-height: 1.5; margin: 0 0 14px; max-width: 70ch; }
 /* Glossa explicativa com a bafarada rosa pàl·lid amb punxa (PDF pàg. 3) */
 .guide .note {
-  position: relative; background: #f8d7d4; color: var(--ink);
+  position: relative; background: var(--red-bubble); color: var(--ink);
   border-radius: 10px; padding: 14px 18px; font-size: .96rem;
   max-width: 60ch; margin: 22px 0;
 }
 .guide .note::before {
   content: ""; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
-  border: 10px solid transparent; border-top: 0; border-bottom: 10px solid #f8d7d4;
+  border: 10px solid transparent; border-top: 0; border-bottom: 10px solid var(--red-bubble);
 }
 
 /* ---------- Dades grans (infografia) ---------- */
@@ -125,7 +125,7 @@
 .age p { margin: 0; }
 
 /* ---------- Targetes ---------- */
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: var(--col); }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-3); max-width: var(--col); }
 .card { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--red); padding: 18px; transition: transform .14s ease, box-shadow .14s ease; }
 .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .card h3 { margin: 0 0 8px; font-size: 1rem; color: var(--red); }
@@ -146,7 +146,7 @@
 .charter li span { display: block; color: var(--ink-soft); font-size: .95rem; margin-top: 2px; }
 
 /* ---------- Grups d'artistes ---------- */
-.groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; max-width: var(--col); }
+.groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-3); max-width: var(--col); }
 .group { background: #fff; border: 1px solid var(--line); padding: 18px; }
 .group .tag { display: inline-block; background: var(--ink); color: #fff; font-size: .72rem; font-weight: 700; padding: 4px 8px; letter-spacing: .04em; margin-bottom: 10px; }
 .group h3 { margin: 0 0 8px; font-size: 1rem; }
@@ -173,7 +173,7 @@
 .tags span { background: var(--ink); color: #fff; font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; padding: 7px 11px; }
 .directory { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; }
 .directory section { margin: 0; }
-.directory h3 { font-size: .76rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); border-bottom: 1px solid var(--line); padding-bottom: 6px; margin: 0 0 8px; }
+.directory h3 { font-size: .76rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin: 0 0 8px; }
 .directory ul { list-style: none; margin: 0; padding: 0; }
 .directory li { font-size: .96rem; margin: 5px 0; }
 

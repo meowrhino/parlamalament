@@ -2,7 +2,7 @@
 // carousel.js — carrusel d'imatges senzill (autoplay + fletxes + punts).
 //   Amb 0-1 imatges no fa res especial: amaga els controls i prou.
 // ============================================================
-import { $, $$ } from "./util.js";
+import { $, $$, prefersReducedMotion } from "./util.js";
 
 const INTERVAL = 5500; // ms entre imatges
 
@@ -22,7 +22,7 @@ export function initCarousel(root) {
   }
 
   const dotsWrap = $(".carousel-dots", root);
-  const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  const reduced = prefersReducedMotion();
   let index = 0;
   let timer = null;
 

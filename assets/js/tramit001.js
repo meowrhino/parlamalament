@@ -3,14 +3,13 @@
 //   Assistent per passos (un bloc = un pas) → animació de verificació →
 //   càlcul (invisible) de la categoria → certificat + descàrrega PDF.
 // ============================================================
-import { $, store } from "./util.js";
+import { $, store, escapeHtml as esc } from "./util.js";
 import {
   BLOCKS, CATEGORIES, OBSERVACIONS, PEU, COS_CERTIFICAT, ANIM_MESSAGES, computeResult,
 } from "./tramit001-data.js";
-import { runVerification, expedient, dataLlarga, makePdf } from "./tramit-common.js";
-
-const esc = (s) => String(s)
-  .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+import { expedient, dataLlarga } from "./tramit-common.js";
+import { runVerification } from "./verify.js";
+import { makePdf } from "./pdf.js";
 
 export function initTramit001() {
   const root = $(".tramit");
