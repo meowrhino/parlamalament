@@ -222,7 +222,6 @@ s'empaqueta cap fitxer de font per llicència; s'usa la del sistema).
   **panell blanc** (paper) per llegibilitat.
 - Les **seccions sense pàgina** (índex 6–15) van a `404.html` ("No hem trobat el que vols").
   GitHub Pages també serveix `404.html` per a qualsevol URL inexistent.
-- *"introduce tu nombre aquí"* es manté en castellà a propòsit (com al wireframe).
 - A la branca **`amb-extres`** hi ha un *snapshot* amb elements decoratius que es van retirar
   (wordmark gegant, arcs, etc.) per si es volen recuperar.
 
