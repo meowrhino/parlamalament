@@ -70,11 +70,12 @@
 }
 .nav-toggle:hover { background: var(--red-dark); }
 .nav-toggle:focus-visible { outline-color: #fff; }
-.nav-toggle .caret {
-  width: 0; height: 0;
-  border-left: 6px solid transparent; border-right: 6px solid transparent;
-  border-top: 7px solid #fff; transition: transform .15s ease;
+/* Indicador del desplegable: chevron de text simple (⌄ tancat → ^ obert) */
+.caret {
+  display: inline-block; font-size: .9em; line-height: 1;
+  transition: transform .15s ease;
 }
+.caret::before { content: "⌄"; }
 .ministeri-nav.nav-open .nav-toggle .caret { transform: rotate(180deg); }
 
 .ministeri { position: relative; }
@@ -91,13 +92,6 @@
 }
 .ministeri:first-child > button { border-left: 1px solid rgba(255,255,255,.22); }
 .ministeri > button:hover { background: var(--red-dark); }
-.ministeri > button .caret {
-  width: 0; height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 6px solid #fff;
-  transition: transform .15s ease;
-}
 .ministeri.open > button .caret { transform: rotate(180deg); }
 
 .ministeri-menu {

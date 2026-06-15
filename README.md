@@ -5,8 +5,8 @@ Generalitat (gencat). Un projecte de **Jordi Bretcha** amb la col·laboració de
 
 Lloc web **estàtic**, en HTML + CSS + JavaScript *vanilla* (sense frameworks ni pas de *build*).
 
-🔗 **En línia (v2):** https://meowrhino.github.io/parlamalament2/
-(La v1 — l'edició anterior amb el domini propi `parlamalament.com` — es manté en un repositori a part.)
+🔗 **En línia:** https://parlamalament.com
+(Edició única, amb domini propi. Les versions anteriors s'han consolidat en aquest repositori.)
 
 ---
 
@@ -185,14 +185,14 @@ python3 serve.py        # → http://127.0.0.1:4321
 
 ## Desplegar
 
-És estàtic: publicat amb **GitHub Pages** (branca `main`, arrel) sota el subdirectori
-`https://meowrhino.github.io/parlamalament2/`. Les rutes internes són relatives, així que
+És estàtic: publicat amb **GitHub Pages** (branca `main`, arrel) amb el domini propi
+**`parlamalament.com`** (fitxer `CNAME` a l'arrel). Les rutes internes són relatives, així que
 funciona igual sota subdirectori o amb domini propi. També es pot pujar tal qual a **Netlify**
-o **Vercel** sense configuració. (No hi ha `CNAME`: aquesta edició no usa domini propi.)
+o **Vercel** sense configuració.
 
 > Nota: les URL absolutes d'Open Graph (`og:url` / `og:image`) apunten a
-> `meowrhino.github.io/parlamalament2`. Si es canvia de domini o de repositori, cal
-> actualitzar-les als `<head>` de les pàgines.
+> `https://parlamalament.com`. Si es canvia de domini o de repositori, cal
+> actualitzar-les als `<head>` de les pàgines i el fitxer `CNAME`.
 
 ## Com editar
 
