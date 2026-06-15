@@ -44,7 +44,7 @@ const ORGANISMES = [
   { sigla: "AERM", nom: "Agència Estatal del Reconeixement Mutu", items: [
       { label: "Tràmit 001 · Autolegitimació", href: "captcha.html" },
       { label: "Tràmit 002 · Propostes i col·laboracions", href: "tramit-002.html" },
-      { label: "Tràmit 003 · Feina i vinculació", href: "tramit-003.html" },
+      { label: "Tràmit 003 · Feina, encàrrec o vinculació", href: "tramit-003.html" },
   ] },
 ];
 
@@ -84,7 +84,7 @@ export function initChrome() {
     nav.setAttribute("aria-label", "Òrgans executius");
     const organismes = ORGANISMES.map((o) => `
       <div class="ministeri">
-        <button type="button">${esc(o.nom)} <span class="caret" aria-hidden="true"></span></button>
+        <button type="button" aria-haspopup="true">${esc(o.nom)} <span class="caret" aria-hidden="true"></span></button>
         <div class="ministeri-menu">
           <div class="menu-head">${o.sigla} · Òrgan executiu</div>
           ${o.items.map(itemLink).join("")}

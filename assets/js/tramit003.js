@@ -30,5 +30,7 @@ export function initTramit003() {
       "administrativa del desig de treballar plegats.",
     filenameStem: "justificant-plm-003",
     backHref: "vincular.html",
+    nextHref: "tramit-002.html",
+    nextLabel: "Fes també el tràmit 002",
   });
 }

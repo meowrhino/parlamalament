@@ -24,7 +24,12 @@ export function initTramit002() {
     justifMessage:
       "La proposta ha estat incorporada al Registre Provisional d'Iniciatives, Recursos i " +
       "Col·laboracions del Parlamalament de l'Artista.",
+    finalPhrase:
+      "La incorporació al registre no implica cap compromís de desenvolupament: garanteix, " +
+      "només, que la proposta existeix administrativament.",
     filenameStem: "justificant-plm-002",
     backHref: "vincular.html",
+    nextHref: "tramit-003.html",
+    nextLabel: "Continua amb el tràmit 003",
   });
 }

@@ -162,6 +162,7 @@ export function initTramit001() {
         <p class="cert-foot">${esc(PEU)}</p>
         <div class="cert-actions">
           <button type="button" class="btn btn-red" data-pdf>Descarrega el certificat (PDF)</button>
+          <a class="link-arrow" href="vincular.html">Ara vincula't amb el Parlamalament <span aria-hidden="true">→</span></a>
           <a class="link-arrow" href="home.html">Torna al Parlamalament <span aria-hidden="true">→</span></a>
         </div>
       </article>`;

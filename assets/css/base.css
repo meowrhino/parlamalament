@@ -11,7 +11,8 @@
   --red: #db392a;          /* vermell de la guia (TGF) — vermelló càlid */
   --red-dark: #b8301f;     /* to fosc per hovers i menús */
   --red-bright: #ff3322;   /* vermell viu de les caixes d'opció */
-  --green: #2faa3a;        /* verd "acceptar" */
+  --green: #2faa3a;        /* verd "acceptar" (fons/icones) */
+  --green-text: #1f7a2b;   /* verd més fosc per a text sobre blanc (compleix contrast AA) */
   --ink: #141414;          /* negre de text */
   --ink-body: #2a2a2a;     /* gris molt fosc per a cos de text secundari */
   --ink-soft: #4a4a4a;

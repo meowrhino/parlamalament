@@ -298,6 +298,7 @@ function renderJustificant(section, cfg, fd) {
       ${testNote}
       <div class="justif-actions">
         <button type="button" class="btn btn-red" data-pdf>Descarrega el justificant (PDF)</button>
+        ${cfg.nextHref ? `<a class="link-arrow" href="${cfg.nextHref}">${escH(cfg.nextLabel || "Següent tràmit")} <span aria-hidden="true">→</span></a>` : ""}
         <a class="link-arrow" href="${cfg.backHref || "home.html"}">Torna al Parlamalament <span aria-hidden="true">→</span></a>
       </div>
     </article>`;

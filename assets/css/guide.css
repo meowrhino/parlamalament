@@ -126,7 +126,8 @@
 
 /* ---------- Targetes ---------- */
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: var(--col); }
-.card { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--red); padding: 18px; }
+.card { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--red); padding: 18px; transition: transform .14s ease, box-shadow .14s ease; }
+.card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .card h3 { margin: 0 0 8px; font-size: 1rem; color: var(--red); }
 .card p { font-size: .96rem; margin: 0; }
 

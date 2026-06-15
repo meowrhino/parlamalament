@@ -8,7 +8,7 @@
   gap: 48px;
   align-items: start;
 }
-.acces h1 { margin: 0 0 14px; font-size: 2.2rem; font-weight: 700; }
+.acces h1 { margin: 0 0 14px; font-size: clamp(1.8rem, 4.5vw, 2.4rem); font-weight: 400; }
 .acces .lead {
   max-width: 46ch; margin: 0 0 26px;
   font-size: 1.02rem; color: var(--ink-body);
@@ -27,9 +27,9 @@
   color: var(--ink); background: #fff;
   border: 1px solid var(--line); border-radius: 0;
 }
-.name-field input:focus {
-  outline: none; border-color: var(--red);
-  box-shadow: 0 0 0 3px rgba(219, 57, 42, .15);
+.name-field input:focus-visible {
+  outline: 3px solid var(--focus); outline-offset: 1px;
+  border-color: var(--red);
 }
 
 /* Botons d'opció */
