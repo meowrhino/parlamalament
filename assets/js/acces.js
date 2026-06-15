@@ -1,7 +1,9 @@
 // ============================================================
 // acces.js — landing 2: captura el nom i la tria de perfil.
 //   · Sense nom → modal d'avís (visible) i no avança.
-//   · "legitimat" passa pel captcha; la resta van directes a la home.
+//   · "Soc artiste legitimat" passa pel captcha; la resta van directes a la home.
+//   · Un element amb data-target força aquesta destinació (p. ex. el
+//     tràmit de legitimació, que va directe a tramit-001.html).
 // ============================================================
 import { $, $$, store } from "./util.js";
 
@@ -32,18 +34,21 @@ export function initAcces() {
     if (e.key === "Escape") closeModal();
   });
 
-  const go = (profile) => {
+  const go = (el) => {
     const name = (input?.value ?? "").trim();
     if (!name) { openModal(); return; }
+    const profile = el.getAttribute("data-profile");
     store.set("pm_name", name);
     store.set("pm_profile", profile);
-    window.location.href = profile === "legitimat" ? "captcha.html" : "home.html";
+    const target = el.getAttribute("data-target")
+      || (profile === "legitimat" ? "captcha.html" : "home.html");
+    window.location.href = target;
   };
 
   $$("[data-profile]").forEach((el) =>
     el.addEventListener("click", (e) => {
       e.preventDefault();
-      go(el.getAttribute("data-profile"));
+      go(el);
     })
   );
 }
