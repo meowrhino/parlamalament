@@ -38,7 +38,7 @@ Tots tres generen un **PDF** amb [jsPDF](https://github.com/parallax/jsPDF) (car
   (la **matriu de puntuacions**, font única) i `assets/js/tramit001.js`.
 - El **002/003** envien el formulari per email amb **Web3Forms** (servei sense backend) a
   `jordi.bretcha@gmail.com`. L'*access key* viu a `WEB3FORMS_ACCESS_KEY` dins
-  `assets/js/tramit-common.js` (**ja configurada**). Si la constant torna a ser el placeholder
+  `assets/js/web3forms.js` (**ja configurada**). Si la constant torna a ser el placeholder
   `POSA-AQUI-LA-ACCESS-KEY`, els tràmits passen a **mode de prova** (no s'envia res, però el flux es prova).
   Els documents es comparteixen mitjançant un **enllaç** (camp `enllac_docs`): el pla gratuït de Web3Forms
   **no permet pujar fitxers**, així que la persona enganxa un enllaç (Drive, WeTransfer, web…) en comptes
@@ -52,7 +52,7 @@ La *access key* d'en Jordi ja està posada, així que els tràmits 002/003 **env
 l'email de destinació, prem **"Create Access Key"**, copia la clau que arriba a aquell Gmail i
 enganxa-la a `WEB3FORMS_ACCESS_KEY`.
 
-> **Recomanat:** al panell de Web3Forms, restringeix els dominis permesos a `meowrhino.github.io`
+> **Recomanat:** al panell de Web3Forms, restringeix els dominis permesos a `parlamalament.com`
 > perquè ningú més pugui fer servir la clau pública. Els formularis porten un *honeypot* (`botcheck`)
 > anti-spam.
 
@@ -107,7 +107,10 @@ parlamalament/
 │   │   ├── captcha.js      construcció de la quadrícula + verificació (→ tramit-001)
 │   │   ├── carousel.js     carrusel d'imatges
 │   │   ├── home.js         salutació + arrenca el carrusel
-│   │   ├── tramit-common.js  utilitats dels tràmits (animació, expedient, PDF jsPDF, enviament Web3Forms)
+│   │   ├── verify.js       animació de verificació dels tràmits (respecta prefers-reduced-motion)
+│   │   ├── pdf.js          generació del PDF amb jsPDF (certificat 001 + justificants 002/003)
+│   │   ├── web3forms.js    enviament per email (Web3Forms) + access key + mode de prova
+│   │   ├── tramit-common.js  orquestrador dels tràmits (assistent, expedient, registre 002/003)
 │   │   ├── tramit001-data.js matriu de puntuacions del 001 (font única) + càlcul de la categoria
 │   │   ├── tramit001.js    assistent + certificat del tràmit 001
 │   │   ├── tramit002.js     config del tràmit 002 (PLM-002)
@@ -204,7 +207,7 @@ o **Vercel** sense configuració.
 | La imatge i mida del captcha | atributs `data-img` / `data-cols` / `data-rows` a `captcha.html` |
 | Afegir fotos al carrusel | duplica un `<div class="slide"><img …></div>` a `home.html` (els controls s'activen sols amb ≥2 imatges) |
 | Les preguntes/puntuacions del tràmit 001 | `assets/js/tramit001-data.js` (matriu única) |
-| Activar l'enviament dels tràmits 002/003 | posa la *access key* de Web3Forms a `WEB3FORMS_ACCESS_KEY` dins `assets/js/tramit-common.js` |
+| Activar l'enviament dels tràmits 002/003 | posa la *access key* de Web3Forms a `WEB3FORMS_ACCESS_KEY` dins `assets/js/web3forms.js` |
 | Els organismes i els seus subapartats | array `ORGANISMES` a `assets/js/chrome.js` |
 
 La tipografia és `Helvetica Neue, Helvetica, Arial…` — la corporativa de gencat (no

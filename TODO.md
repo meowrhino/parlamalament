@@ -3,7 +3,7 @@
 Pendents recollits el 15/06/2026. Es revisaran més endavant (l'essencial ja és en línia).
 
 ## Pendent d'en Jordi (operatiu)
-- [ ] Restringir el domini permès a `meowrhino.github.io` al panell de **Web3Forms** (anti-abús de la clau pública). Els formularis 002/003 ja funcionen; això és protecció extra.
+- [ ] Restringir el domini permès a `parlamalament.com` al panell de **Web3Forms** (anti-abús de la clau pública). Els formularis 002/003 ja funcionen; això és protecció extra. *(Compte: el domini és el nou, `parlamalament.com` — no el vell `meowrhino.github.io`.)*
 
 ## Dubtes / decisions obertes
 - [ ] **Punt 6 (captcha):** salut personalitzat també a la *pàgina del captcha*, o n'hi ha prou amb el de la home? (ara el salut és a la home, després del captcha).

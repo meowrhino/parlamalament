@@ -2,7 +2,7 @@
 // web3forms.js — enviament del formulari per email (servei sense backend).
 //   La clau d'en Jordi ja està posada: els tràmits 002/003 ENVIEN de debò a
 //   jordi.bretcha@gmail.com. És una clau pública per disseny (Web3Forms no té
-//   backend); convé restringir el domini permès a meowrhino.github.io al panell.
+//   backend); convé restringir el domini permès a parlamalament.com al panell.
 //   Si es torna a posar el placeholder "POSA-AQUI-LA-ACCESS-KEY", els tràmits
 //   passen a MODE DE PROVA (no s'envia res, però el flux es pot provar igual).
 // ============================================================
