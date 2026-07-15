@@ -100,7 +100,7 @@ parlamalament/
 │   │
 │   ├── js/             mòduls ES (carregats des de main.js amb type="module")
 │   │   ├── util.js         helpers ($, $$), estat (sessionStorage), etiquetes de perfil
-│   │   ├── chrome.js       LLISTA DE SECCIONS + ORGANISMES + construeix nav i sidebar (una sola font)
+│   │   ├── chrome.js       CAPÇALERA + PEU + LLISTA DE SECCIONS + ORGANISMES → construeix chrome, nav i sidebar (una sola font)
 │   │   ├── nav.js          desplegables dels Organismes
 │   │   ├── consent.js      landing 1
 │   │   ├── acces.js        landing 2 (validació del nom + navegació)
@@ -142,17 +142,20 @@ parlamalament/
   pertanyen.
 - **JS en mòduls ES:** `main.js` mira l'atribut `data-page` del `<body>` i crida només la
   inicialització d'aquella pàgina. Cada mòdul fa una cosa i s'entén per separat.
-- **Capçalera/peu repetits a cada HTML** a propòsit: així cada pàgina és un document complet
-  i autònom (no depèn de cap inclusió ni de JavaScript per pintar-se, cosa que manté intactes
-  el SEO i les previsualitzacions en compartir).
+- **Capçalera i peu centralitzats a `chrome.js`:** el `<header>` i el `<footer>` (idèntics a
+  totes les pàgines) es pinten per JS als punts de muntatge `<header|footer data-chrome>`, així
+  s'editen en un únic lloc. El `<head>`/OG **sí** queda estàtic a cada HTML, perquè els robots
+  de previsualització no executen JS i el SEO l'ha de poder llegir sense JavaScript.
 
-### Navegació: una sola font (`chrome.js`)
+### Navegació i chrome: una sola font (`chrome.js`)
 
-La **barra d'Organismes** (desplegables) i la **sidebar "Funcions"** es construeixen per JS
-des de `assets/js/chrome.js`. Hi ha dues llistes: `SECTIONS` (l'índex del TFG, que alimenta la
-sidebar i el desplegable "Guia") i `ORGANISMES` (els quatre òrgans executius —abans Ministeris—
-amb els seus subapartats propis). Així s'edita en un únic lloc i apareix igual a totes les
-pàgines (home + guies).
+La **capçalera**, el **peu**, la **barra d'Organismes** (desplegables) i la **sidebar
+"Funcions"** es construeixen per JS des de `assets/js/chrome.js`. La capçalera i el peu
+s'injecten a totes les pàgines que porten els punts de muntatge `<header data-chrome="header">`
+i `<footer data-chrome="footer">` (via `mountChrome()`, abans del gate de la nav). Per a la
+navegació hi ha dues llistes: `SECTIONS` (l'índex del TFG, que alimenta la sidebar i el
+desplegable "Guia") i `ORGANISMES` (els quatre òrgans executius —abans Ministeris— amb els
+seus subapartats propis). Així s'edita en un únic lloc i apareix igual a totes les pàgines.
 
 **Els organismes** (Institut del Malestar Cultural, Observatori de la meritocràcia, Consell
 Superior de Legitimitat Artística, Agència Estatal del Reconeixement Mutu) tenen cadascun el seu
@@ -165,14 +168,21 @@ pàgina, canvia el `null` per `"la-teva-pagina.html"` i ja queda enllaçada a to
 
 ### Blocs encara duplicats (editar-los en bloc)
 
-Sense pas de *build*, aquests trossos segueixen copiats a cada pàgina (la **`home.html`** és la
-referència). El `<head>`/OG **ha de** quedar estàtic (els robots de previsualització no executen JS):
+Sense pas de *build*, aquest tros segueix copiat a cada pàgina (la **`home.html`** és la
+referència). Ha de quedar estàtic perquè els robots de previsualització no executen JS:
 
 | Bloc | On apareix | Notes |
 |---|---|---|
 | `<head>` (meta + Open Graph/Twitter) | totes les pàgines | canvia `og:title`/`og:url` per pàgina; la resta és idèntica |
-| `<header>` + `<footer>` (chrome) | totes les pàgines amb capçalera | idèntics byte a byte |
-| Isotip inline (l'SVG de la "cara") | capçalera i peu de cada pàgina | usa `currentColor` (blanc al header, vermell al peu) |
+
+> La **capçalera** i el **peu** ja **no** es dupliquen: viuen a `chrome.js` (`HEADER_INNER` /
+> `FOOTER_INNER`) i s'injecten als punts de muntatge `<header|footer data-chrome>`. L'isotip
+> de la capçalera i el peu és el `<span class="mark">` (fons per CSS), no un SVG inline.
+>
+> *Compte al 404:* com que el chrome ara depèn de JS, si GitHub Pages serveix `404.html` sota
+> una ruta profunda inexistent (p. ex. `/foo/bar`), les rutes relatives d'assets no resolen i
+> el header/footer no es pinten (el CSS ja fallava igual en aquest cas). El missatge del cos
+> del 404, però, és HTML estàtic i sempre es veu.
 
 ## Veure-ho en local
 
@@ -209,6 +219,7 @@ o **Vercel** sense configuració.
 | Les preguntes/puntuacions del tràmit 001 | `assets/js/tramit001-data.js` (matriu única) |
 | Activar l'enviament dels tràmits 002/003 | posa la *access key* de Web3Forms a `WEB3FORMS_ACCESS_KEY` dins `assets/js/web3forms.js` |
 | Els organismes i els seus subapartats | array `ORGANISMES` a `assets/js/chrome.js` |
+| La capçalera o el peu (comuns) | `HEADER_INNER` / `FOOTER_INNER` a `assets/js/chrome.js` |
 
 La tipografia és `Helvetica Neue, Helvetica, Arial…` — la corporativa de gencat (no
 s'empaqueta cap fitxer de font per llicència; s'usa la del sistema).

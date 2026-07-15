@@ -25,6 +25,35 @@ export const SECTIONS = [
 
 const NOT_FOUND = "404.html";
 
+// Capçalera i peu (chrome comú). Abans estaven copiats byte a byte a cada HTML;
+// ara viuen aquí i s'injecten als punts de muntatge <header|footer data-chrome>.
+// El <head>/OG segueix estàtic a cada pàgina (els robots de previsualització no
+// executen JS). Vegeu README → "Blocs encara duplicats".
+const HEADER_INNER = `
+      <div class="container">
+        <a class="brand-title" href="home.html"><span class="mark" role="img" aria-label="El Parlamalament"></span>El Parlamalament</a>
+        <div class="header-meta">
+          <a href="mailto:jordi.bretcha@gmail.com?subject=Suport%20Parlamalament">Suport</a>
+        </div>
+      </div>`;
+
+const FOOTER_INNER = `
+      <div class="container">
+        <div class="footer-brand">
+          <span class="mark" role="img" aria-label="El Parlamalament"></span>
+          <span class="name">Parlamalament<br>de l'Artista</span>
+        </div>
+      </div>`;
+
+// Omple els punts de muntatge del chrome comú. S'executa a TOTES les pàgines que
+// el porten (acces, captcha, 404, home, guies, tràmits), abans del gate WITH_NAV.
+function mountChrome() {
+  const header = document.querySelector('header.site-header[data-chrome="header"]');
+  if (header && !header.hasChildNodes()) header.innerHTML = HEADER_INNER;
+  const footer = document.querySelector('footer.site-footer[data-chrome="footer"]');
+  if (footer && !footer.hasChildNodes()) footer.innerHTML = FOOTER_INNER;
+}
+
 // Organismes executius (abans Ministeris). Cada organisme té els SEUS subapartats.
 //   item: { label, href?, external?, soon? }
 //   · soon:true     → encara sense pàgina (va a 404 amb estil atenuat)
@@ -73,6 +102,10 @@ function itemLink(it) {
 
 export function initChrome() {
   const page = document.body.dataset.page;
+
+  // Capçalera i peu comuns: a totes les pàgines que porten els punts de muntatge.
+  mountChrome();
+
   // A home, pàgines de guia i pàgines de tràmit (perquè no siguin culs-de-sac).
   const WITH_NAV = new Set(["home", "guide", "tramit001", "tramit002", "tramit003"]);
   if (!WITH_NAV.has(page)) return;
