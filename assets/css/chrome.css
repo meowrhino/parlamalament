@@ -92,9 +92,12 @@
   display: inline-flex; align-items: center; gap: 8px;
   font-size: .92rem; font-weight: 600;
   color: #fff; background: transparent;
-  border-right: 1px solid rgba(255,255,255,.22);
+  /* Divisor A L'ESQUERRA (entre elements): així no queden línies "penjant" al
+     final de cada fila quan la barra fa wrap, i totes les files arrenquen igual. */
+  border-left: 1px solid rgba(255,255,255,.22);
 }
-.ministeri:first-child > button { border-left: 1px solid rgba(255,255,255,.22); }
+/* El primer organisme no porta divisor d'entrada (vora esquerra neta de la barra). */
+.organismes-bar .ministeri:first-child > button { border-left: 0; }
 .ministeri > button:hover { background: var(--red-dark); }
 .ministeri.open > button .caret { transform: rotate(180deg); }
 
