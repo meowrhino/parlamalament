@@ -171,10 +171,15 @@
   }
   .ministeri-menu {
     position: static;
+    /* A l'acordió el submenú ocupa TOT l'ample; sense els límits del desplegable
+       flotant d'escriptori (si no, el panell es quedava estret a mig ample). */
+    min-width: 0; max-width: none;
+    max-height: none; overflow: visible;
     border: 0; box-shadow: none;
     background: var(--red-dark);
   }
-  .ministeri-menu a { color: #fff; }
+  /* Sagnat lleuger dels subapartats perquè es llegeixi la jerarquia dins l'acordió */
+  .ministeri-menu a { color: #fff; padding-left: 34px; }
   .ministeri-menu a:hover { color: #fff; background: rgba(0,0,0,.2); }
   /* a l'acordió mòbil el menú té fons vermell: anell de focus blanc */
   .ministeri-menu a:focus-visible { outline-color: #fff; }
