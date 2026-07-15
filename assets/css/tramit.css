@@ -108,8 +108,17 @@
   border: 1px solid var(--line); border-radius: 10px;
   background: var(--paper-soft);
   padding: 16px 20px 20px; margin: 0 0 16px;
+  display: flow-root;   /* conté el legend flotant (títol sempre dins del panell) */
 }
-.field-group > legend { font-weight: 700; color: var(--red); font-size: 1.1rem; padding: 0; margin-bottom: 14px; }
+/* El <legend> nadiu se situa SOBRE la vora superior del panell; en fer wrap a
+   dues línies (mòbil) la 2a línia xocava amb la vora. El tornem un bloc normal
+   (float + width:100%) perquè segui net DINS del panell i la vora es dibuixi
+   sencera per damunt. */
+.field-group > legend {
+  float: left; width: 100%;
+  font-weight: 700; color: var(--red); font-size: 1.1rem; padding: 0; margin-bottom: 14px;
+}
+.field-group > legend + * { clear: both; }
 .field-group > legend::before {
   content: counter(fg);
   display: inline-flex; align-items: center; justify-content: center;
