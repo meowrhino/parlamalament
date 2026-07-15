@@ -106,13 +106,6 @@
   box-shadow: var(--shadow);
 }
 .ministeri.open .ministeri-menu { display: block; }
-.ministeri-menu .menu-head {
-  padding: 8px 18px 6px;
-  margin-bottom: 4px;
-  font-size: .72rem; text-transform: uppercase; letter-spacing: .06em;
-  color: var(--ink-soft);
-  border-bottom: 1px solid var(--line);
-}
 .ministeri-menu a {
   display: flex; gap: .5em; align-items: baseline;
   padding: 9px 18px;
@@ -171,7 +164,6 @@
     border: 0; box-shadow: none;
     background: var(--red-dark);
   }
-  .ministeri-menu .menu-head { color: #ffd; border-color: rgba(255,255,255,.2); }
   .ministeri-menu a { color: #fff; }
   .ministeri-menu a:hover { color: #fff; background: rgba(0,0,0,.2); }
   /* a l'acordió mòbil el menú té fons vermell: anell de focus blanc */

@@ -120,7 +120,6 @@ export function initChrome() {
       <div class="ministeri">
         <button type="button" aria-haspopup="true">${esc(o.nom)} <span class="caret" aria-hidden="true"></span></button>
         <div class="ministeri-menu">
-          <div class="menu-head">${o.sigla} · Òrgan executiu</div>
           ${o.items.map(itemLink).join("")}
         </div>
       </div>`).join("");
@@ -130,7 +129,6 @@ export function initChrome() {
       <div class="ministeri">
         <button type="button">Guia <span class="caret" aria-hidden="true"></span></button>
         <div class="ministeri-menu">
-          <div class="menu-head">Continguts del Parlamalament</div>
           <a href="guia.html"${current("guia.html")}>Sumari de la guia</a>
           ${sectionLinks()}
         </div>
