@@ -25,6 +25,13 @@ export const SECTIONS = [
 
 const NOT_FOUND = "404.html";
 
+// Documents d'interès: enllaços externs de referència (drets culturals).
+const DOCUMENTS = [
+  { label: "Pla de Drets Culturals (Ministeri de Cultura)", href: "https://planderechosculturales.cultura.gob.es/", external: true },
+  { label: "Declaració Universal dels Drets Humans (ONU)", href: "https://www.un.org/es/about-us/universal-declaration-of-human-rights", external: true },
+  { label: "Declaració de Friburg sobre els Drets Culturals", href: "https://www.unifr.ch/ethique/assets/public/files/declaration-esp3.pdf", external: true },
+];
+
 // Capçalera i peu (chrome comú). Abans estaven copiats byte a byte a cada HTML;
 // ara viuen aquí i s'injecten als punts de muntatge <header|footer data-chrome>.
 // El <head>/OG segueix estàtic a cada pàgina (els robots de previsualització no
@@ -117,12 +124,20 @@ export function initChrome() {
     nav.className = "ministeri-nav";
     nav.setAttribute("aria-label", "Òrgans executius");
     const organismes = ORGANISMES.map((o) => `
-      <div class="ministeri">
+      <div class="ministeri is-organ">
         <button type="button" aria-haspopup="true">${esc(o.nom)} <span class="caret" aria-hidden="true"></span></button>
         <div class="ministeri-menu">
           ${o.items.map(itemLink).join("")}
         </div>
       </div>`).join("");
+    // Desplegable "Documents d'interès" (enllaços externs de referència).
+    const documents = `
+      <div class="ministeri">
+        <button type="button">Documents d'interès <span class="caret" aria-hidden="true"></span></button>
+        <div class="ministeri-menu">
+          ${DOCUMENTS.map(itemLink).join("")}
+        </div>
+      </div>`;
     // Desplegable "Guia" amb l'índex de continguts (perquè les pàgines de
     // contingut puguin navegar entre seccions sense la sidebar de la home).
     const guia = `
@@ -133,12 +148,19 @@ export function initChrome() {
           ${sectionLinks()}
         </div>
       </div>`;
-    // Botó hamburguesa (només visible en mòbil via CSS): plega/desplega tota la
-    // barra d'organismes en un sol desplegable.
+    // Botó hamburguesa (només visible en mòbil): en mòbil plega NOMÉS els
+    // organismes dins de ".organismes-group"; "Documents d'interès" i "Guia"
+    // queden sempre visibles com a desplegables de primer nivell.
     const toggle =
       `<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="organismes-bar">` +
       `<span>Organismes</span><span class="caret" aria-hidden="true"></span></button>`;
-    nav.innerHTML = `${toggle}<div class="container" id="organismes-bar">${organismes}${guia}</div>`;
+    nav.innerHTML =
+      `<div class="container">` +
+        `<div class="organismes-group">${toggle}` +
+          `<div class="organismes-bar" id="organismes-bar">${organismes}</div>` +
+        `</div>` +
+        documents + guia +
+      `</div>`;
     header.insertAdjacentElement("afterend", nav);
   }
 

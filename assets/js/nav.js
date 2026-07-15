@@ -35,12 +35,12 @@ export function initNav() {
     });
   });
 
-  // Hamburguesa (mòbil): plega/desplega tota la barra d'organismes.
-  const nav = document.querySelector(".ministeri-nav");
-  const toggle = nav?.querySelector(".nav-toggle");
+  // Hamburguesa (mòbil): plega/desplega NOMÉS el grup d'organismes.
+  const toggle = document.querySelector(".ministeri-nav .nav-toggle");
+  const group = toggle?.closest(".organismes-group");
   toggle?.addEventListener("click", (e) => {
     e.stopPropagation();
-    const open = nav.classList.toggle("nav-open");
+    const open = group.classList.toggle("nav-open");
     toggle.setAttribute("aria-expanded", String(open));
     if (!open) closeAll(null); // en plegar, tanca també els submenús
   });

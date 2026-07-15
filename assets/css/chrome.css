@@ -57,6 +57,10 @@
   border-top: 1px solid rgba(255,255,255,.25);
 }
 .ministeri-nav .container { display: flex; flex-wrap: wrap; }
+/* A escriptori el grup d'organismes no pinta caixa pròpia: els seus desplegables
+   flueixen dins la fila com si fossin germans de "Documents" i "Guia". En mòbil
+   torna a ser un bloc (acordió) — vegeu la media query. */
+.organismes-group, .organismes-bar { display: contents; }
 
 /* Botó hamburguesa: amagat a escriptori; en mòbil plega/desplega tota la barra */
 .nav-toggle {
@@ -76,7 +80,7 @@
   transition: transform .15s ease;
 }
 .caret::before { content: "⌄"; }
-.ministeri-nav.nav-open .nav-toggle .caret { transform: rotate(180deg); }
+.organismes-group.nav-open .nav-toggle .caret { transform: rotate(180deg); }
 
 .ministeri { position: relative; }
 /* El Ministeri obert s'eleva perquè el seu desplegable tapi la resta de
@@ -150,10 +154,13 @@
 @media (max-width: 880px) {
   .brand-title { font-size: 1.15rem; }
 
-  /* Tots els organismes queden dins d'UN sol desplegable (hamburguesa) */
+  /* Només els ORGANISMES queden dins de la hamburguesa; "Documents d'interès"
+     i "Guia" es queden sempre visibles com a desplegables de primer nivell. */
   .nav-toggle { display: flex; }
-  .ministeri-nav .container { display: none; flex-direction: column; }
-  .ministeri-nav.nav-open .container { display: flex; }
+  .ministeri-nav .container { flex-direction: column; }
+  .organismes-group { display: block; width: 100%; }   /* deixa de ser display:contents */
+  .organismes-bar { display: none; }
+  .organismes-group.nav-open .organismes-bar { display: block; }
   .ministeri { width: 100%; }
   .ministeri > button {
     width: 100%; justify-content: space-between;

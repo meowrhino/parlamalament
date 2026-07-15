@@ -153,14 +153,20 @@ La **capçalera**, el **peu**, la **barra d'Organismes** (desplegables) i la **s
 "Funcions"** es construeixen per JS des de `assets/js/chrome.js`. La capçalera i el peu
 s'injecten a totes les pàgines que porten els punts de muntatge `<header data-chrome="header">`
 i `<footer data-chrome="footer">` (via `mountChrome()`, abans del gate de la nav). Per a la
-navegació hi ha dues llistes: `SECTIONS` (l'índex del TFG, que alimenta la sidebar i el
-desplegable "Guia") i `ORGANISMES` (els quatre òrgans executius —abans Ministeris— amb els
-seus subapartats propis). Així s'edita en un únic lloc i apareix igual a totes les pàgines.
+navegació hi ha tres llistes: `SECTIONS` (l'índex del TFG, que alimenta la sidebar i el
+desplegable "Guia"), `ORGANISMES` (els quatre òrgans executius —abans Ministeris— amb els
+seus subapartats propis) i `DOCUMENTS` (el desplegable "Documents d'interès", enllaços externs
+de referència). Així s'edita en un únic lloc i apareix igual a totes les pàgines.
 
 **Els organismes** (Institut del Malestar Cultural, Observatori de la meritocràcia, Consell
 Superior de Legitimitat Artística, Agència Estatal del Reconeixement Mutu) tenen cadascun el seu
 menú de subapartats. Cada item pot ser `{ href }`, `{ soon:true }` (encara sense pàgina → va a
 `404.html` atenuat) o `{ external:true }` (s'obre en una pestanya nova).
+
+**En mòbil**, la hamburguesa "Organismes" plega **només** els quatre organismes (`.organismes-group`);
+"Documents d'interès" i "Guia" es queden sempre visibles com a desplegables de primer nivell. A
+escriptori tot va en una sola fila: `.organismes-group` és `display:contents` perquè els seus
+desplegables flueixin com si fossin germans dels altres dos.
 
 **Per afegir/activar una secció de la guia:** edita `SECTIONS` a `chrome.js`. Si una secció encara
 no té pàgina, posa-li `href: null` i l'enllaç anirà a `404.html` ("no trobat"). Quan creïs la
@@ -219,6 +225,7 @@ o **Vercel** sense configuració.
 | Les preguntes/puntuacions del tràmit 001 | `assets/js/tramit001-data.js` (matriu única) |
 | Activar l'enviament dels tràmits 002/003 | posa la *access key* de Web3Forms a `WEB3FORMS_ACCESS_KEY` dins `assets/js/web3forms.js` |
 | Els organismes i els seus subapartats | array `ORGANISMES` a `assets/js/chrome.js` |
+| Els enllaços de "Documents d'interès" | array `DOCUMENTS` a `assets/js/chrome.js` |
 | La capçalera o el peu (comuns) | `HEADER_INNER` / `FOOTER_INNER` a `assets/js/chrome.js` |
 
 La tipografia és `Helvetica Neue, Helvetica, Arial…` — la corporativa de gencat (no

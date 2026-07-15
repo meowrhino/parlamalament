@@ -177,6 +177,16 @@
 .directory ul { list-style: none; margin: 0; padding: 0; }
 .directory li { font-size: .96rem; margin: 5px 0; }
 
+/* ---------- Informes i fonts (llista de referències amb enllaç extern) ---------- */
+.sources { list-style: none; margin: 8px 0 0; padding: 0; max-width: var(--col); }
+.sources li { border-top: 1px solid var(--line); padding: 13px 4px; }
+.sources li:last-child { border-bottom: 1px solid var(--line); }
+.sources a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 1.02rem; }
+.sources a:hover { color: var(--red); text-decoration: underline; }
+/* Fletxa d'enllaç extern (com als desplegables "Documents d'interès") */
+.sources a[target="_blank"]::after { content: " ↗"; color: var(--ink-soft); font-weight: 400; }
+.sources .src { display: block; color: var(--ink-soft); font-size: .9rem; margin-top: 3px; }
+
 /* ---------- Tornar ---------- */
 .guide-back { display: inline-block; margin: 8px 0 0; color: var(--red); font-weight: 600; text-decoration: none; }
 .guide-back:hover { text-decoration: underline; }
